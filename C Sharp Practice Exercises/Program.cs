@@ -12,8 +12,8 @@ namespace C_Sharp_Practice_Exercises
     {
         static void Main(string[] args)
         {
-            //ExecuteAllBasicExercises();
-            //Console.WriteLine();
+            ExecuteAllBasicExercises();
+            Console.WriteLine();
             ExecuteAllDataTypeExercises();
             Console.ReadKey();
         }
