@@ -70,7 +70,7 @@ namespace C_Sharp_Practice_Exercises
         private static UserCredentials AskUserForUserIdAndPassword(UserCredentials userCred, int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("\nYour entered the wrong credentials. Try again...");
+                Console.WriteLine("\nYou entered the wrong credentials. Try again...");
             Console.WriteLine("\nEnter the user id...");
             userCred.UserId = Console.ReadLine();
             Console.WriteLine("\nEnter the password...");

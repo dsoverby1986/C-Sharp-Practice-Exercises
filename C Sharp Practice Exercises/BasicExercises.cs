@@ -64,12 +64,22 @@ namespace C_Sharp_Practice_Exercises
 
         private static void BasicExercise5()
         {
-            Console.WriteLine("Input the first number...");
-            string firstNumber = Console.ReadLine();
-            Console.WriteLine("Input the second number...");
-            string secondNumber = Console.ReadLine();
+            double firstNumber = (double)GetNumberForSwap("first", 0);
+            double secondNumber = (double)GetNumberForSwap("second", 0);
             Console.WriteLine("First Number: {0}", secondNumber);
             Console.WriteLine("Second Number: {0}", firstNumber);
+        }
+
+        private static object GetNumberForSwap(string numNumber, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Dude, just give me a number, like I said. Come On!");
+            Console.WriteLine("Input the {0} number...", numNumber);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            else
+                return GetNumberForSwap(numNumber, ++attempts);
         }
 
         private static void BasicExercise6()
@@ -115,7 +125,7 @@ namespace C_Sharp_Practice_Exercises
         private static object GetAddSubtractMultiplyDivideModNumber(string numNumber, int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("Hey Buddy, I said you need to give me a NUMBER. So do it!");
+                Console.WriteLine("Hey Buddy, I said you need to give me a NUMBER, OTHER THAN ZERO. So do it!");
             Console.WriteLine("Enter the {0} number, other than 0, to add, subtract, multiply and divide...", numNumber);
             double num = 0;
             if (double.TryParse(Console.ReadLine(), out num) && num != 0)
@@ -145,39 +155,63 @@ namespace C_Sharp_Practice_Exercises
 
         private static void BasicExercise9()
         {
-            Console.WriteLine("Enter the first number of four to find their average...");
-            int avOne = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the second number of four to find their average...");
-            int avTwo = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the third number of four to find their average...");
-            int avThree = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the fourth number of four to find their average...");
-            int avFour = Int32.Parse(Console.ReadLine());
+            double avOne = (double)GetNumberForAverage("first", 0);
+            double avTwo = (double)GetNumberForAverage("second", 0);
+            double avThree = (double)GetNumberForAverage("third", 0);
+            double avFour = (double)GetNumberForAverage("fourth", 0);
             Console.WriteLine("The average of {0}, {1}, {2} and {3} is: {4}", avOne, avTwo, avThree, avFour, (avOne + avTwo + avThree + avFour) / 4);
+        }
+
+        private static object GetNumberForAverage(string numNumber, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Listen shit head, I said enter a NUMBER! Let's give that another go...");
+            Console.WriteLine("Enter the {0} number of four to find their average...", numNumber);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            else
+                return GetNumberForAverage(numNumber, ++attempts);
         }
 
         private static void BasicExercise10()
         {
-            Console.WriteLine("Enter the first number to get two wonky equations...");
-            int firstNum = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the second number to get two wonky equations...");
-            int secondNum = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the third number to get two wonky equations...");
-            int thirdNum = Int32.Parse(Console.ReadLine());
+            double firstNum = (double)GetNumberForWonkyEquation("first", 0);
+            double secondNum = (double)GetNumberForWonkyEquation("second", 0);
+            double thirdNum = (double)GetNumberForWonkyEquation("third", 0);
             Console.WriteLine("Result of specified numbers {0}, {1} and {2} is: ({0} + {1}) * {2} = {3} and {0} * {1} + {1} * {2} = {4}", firstNum, secondNum, thirdNum, (firstNum + secondNum) * thirdNum, firstNum * secondNum + secondNum * thirdNum);
         }
 
-        private static void BasicExercise11()
+        private static object GetNumberForWonkyEquation(string numNumber, int attempts)
         {
+            if (attempts > 0)
+                Console.WriteLine("Damn it! I told you to enter a number! Now try it again!");
+            Console.WriteLine("Enter the {0} number to get two wonky equations...", numNumber);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            else
+                return GetNumberForWonkyEquation(numNumber, ++attempts);
+        }
+
+        private static void BasicExercise11() =>
+            Console.WriteLine("You look older than {0}", GetAge(0));
+
+        private static object GetAge(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Come on dude! That's not an age! Give me a whole number!");
             Console.WriteLine("How old are you?");
-            int age = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("You look older than {0}", age);
+            int age = 0;
+            if (Int32.TryParse(Console.ReadLine(), out age))
+                return age;
+            else
+                return GetAge(++attempts);
         }
 
         private static void BasicExercise12()
         {
-            Console.WriteLine("Input a number to make a pattern with...");
-            int num = Int32.Parse(Console.ReadLine());
+            int num = (int)GetPatternNumber(0);
             for (int i = 1; i <= 4; i++)
                 if (i % 2 != 0)
                     Console.WriteLine("{0} {0} {0} {0}", num);
@@ -185,24 +219,57 @@ namespace C_Sharp_Practice_Exercises
                     Console.WriteLine("{0}{0}{0}{0}", num);
         }
 
+        private static object GetPatternNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Come on baby! Just give me a positive whole number!");
+            Console.WriteLine("Input a positive whole number to make a pattern with...");
+            int num = 0;
+            if (Int32.TryParse(Console.ReadLine(), out num))
+                return num;
+            else
+                return GetPatternNumber(++attempts);
+        }
+
         private static void BasicExercise13()
         {
-            Console.WriteLine("Input the number to be made a rectangle of...");
-            int num = Int32.Parse(Console.ReadLine());
+            int num = (int)GetRectangleNumber(0);
             for (int i = 0; i < 5; i++)
                 if (i == 0 || i == 4)
                     Console.WriteLine("{0}{0}{0}", num);
                 else
                     Console.WriteLine("{0} {0}", num);
+        }
 
+        private static object GetRectangleNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Now, damn it! Didn't I say to give me a positive whole number? Well, do it!");
+            Console.WriteLine("Input a positive whole number to be made a rectangle of...");
+            int num = 0;
+            if (Int32.TryParse(Console.ReadLine(), out num))
+                return num;
+            else
+                return GetRectangleNumber(++attempts);
         }
 
         private static void BasicExercise14()
         {
+            double celsTemp = (double)GetCelsiusTemp(0);
+            Console.WriteLine("Kelvin = {0}", celsTemp + 273.15);
+            Console.WriteLine("Fahrenheit = {0}", celsTemp * 1.8 + 32);
+        }
+
+        private static object GetCelsiusTemp(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Hey! I said to give me a number! That's not a number! Make with the digits!");
             Console.WriteLine("Input the celsius temperature...");
-            double celsTemp = double.Parse(Console.ReadLine());
-            Console.WriteLine("Kelvin = {0}", (celsTemp * 1.8 + 32));
-            Console.WriteLine("Fahrenheit = {0}", (celsTemp + 273.15));
+            double temp = 0;
+            if (double.TryParse(Console.ReadLine(), out temp))
+                return temp;
+            else
+                return GetCelsiusTemp(++attempts);
         }
     }
 }
