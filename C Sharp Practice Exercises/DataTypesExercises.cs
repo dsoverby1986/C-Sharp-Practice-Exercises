@@ -17,6 +17,7 @@ namespace C_Sharp_Practice_Exercises
             DataTypeExercise4();
             DataTypeExercise5();
             DataTypeExercise6();
+            DataTypeExercise7();
         }
         
         private static void DataTypeExercise1()
@@ -222,5 +223,60 @@ namespace C_Sharp_Practice_Exercises
             else
                 return UserWantsToTryForAnotherNumber(++attempts);
         }
+
+        private static void DataTypeExercise7()
+        {
+            Console.WriteLine("Let's calculate the speed required to travel a specified distance over a specified time.\n");
+            double distance = (double)GetDistance(0);
+            int hours = (int)GetTime("hours", 0);
+            int minutes = (int)GetTime("minutes", 0);
+            int seconds = (int)GetTime("seconds", 0);
+            double calcHours = CalculateHours(hours, minutes, seconds);
+            double calcSeconds = CalculateSeconds(calcHours);
+            Dictionary<string, double> rates = new Dictionary<string, double>()
+            {
+                { "miles/hour", distance / calcHours },
+                { "kilometers/hour", distance * 1.60934 / calcHours },
+                { "meters/second", distance * 1609.34 / calcSeconds },
+                { "feet/second", distance * 5280 / calcSeconds }
+            };
+            Console.WriteLine();
+            foreach (KeyValuePair<string, double> rate in rates)
+                Console.WriteLine($"Your speed in {rate.Key} is {rate.Value}");
+            ReadKeyAndClear();
+        }
+
+        private static object GetDistance(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nBuddy Boy! I said give me a number for the distance! Do that instead of what you just did.\n");
+            Console.WriteLine("Enter a number that represents the distance traveled in miles...");
+            double distance = 0;
+            if (double.TryParse(Console.ReadLine(), out distance))
+                return distance;
+            else
+                return GetDistance(++attempts);
+        }
+
+        private static object GetTime(string type, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nCome on, pal! I said give me a positive whole number for the {0}! Give it another go.", type);
+            Console.WriteLine("\nEnter a positive whole number that represents the {0}...", type);
+            int time = 0;
+            if (Int32.TryParse(Console.ReadLine(), out time) && time > 0)
+                return time;
+            else
+                return GetTime(type, ++attempts);
+        }
+
+        private static double CalculateHours(int hours, int minutes, int seconds)
+        {
+            double calculatedMinutes = minutes + seconds / 60;
+            return hours + calculatedMinutes / 60;
+        }
+
+        private static double CalculateSeconds(double hours) =>
+            hours * 3600;
     }
 }
