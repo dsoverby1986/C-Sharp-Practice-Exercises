@@ -6,52 +6,42 @@ using System.Threading.Tasks;
 
 namespace C_Sharp_Practice_Exercises
 {
-    class BasicExercises
+    class BasicExercises : ConsoleReadKeyClearBehavior
     {
         public static void ExecuteAllBasicExercises()
         {
             BasicExercise1();
-            Console.WriteLine();
             BasicExercise2();
-            Console.WriteLine();
             BasicExercise3();
-            Console.WriteLine();
             BasicExercise4();
-            Console.WriteLine();
             BasicExercise5();
-            Console.WriteLine();
             BasicExercise6();
-            Console.WriteLine();
             BasicExercise7();
-            Console.WriteLine();
             BasicExercise8();
-            Console.WriteLine();
             BasicExercise9();
-            Console.WriteLine();
             BasicExercise10();
-            Console.WriteLine();
             BasicExercise11();
-            Console.WriteLine();
             BasicExercise12();
-            Console.WriteLine();
             BasicExercise13();
-            Console.WriteLine();
             BasicExercise14();
         }
 
         private static void BasicExercise1()
         {
             Console.WriteLine("Hello: Shane Overby");
+            ReadKeyAndClear();
         }
 
         private static void BasicExercise2()
         {
             Console.WriteLine("12 + 33 = {0}", (12 + 33));
+            ReadKeyAndClear();
         }
 
         private static void BasicExercise3()
         {
             Console.WriteLine("276 / 14 = {0}", (276 / 14));
+            ReadKeyAndClear();
         }
 
         private static void BasicExercise4()
@@ -60,6 +50,7 @@ namespace C_Sharp_Practice_Exercises
             Console.WriteLine("(35 + 5) % 7 = {0}", ((35 + 5) % 7));
             Console.WriteLine("14 + -4 * 6 / 11 = {0}", (14 + -4 * 6 / 11));
             Console.WriteLine("2 + 15 / 6 * 1 - 7 % 2 = {0}", (2 + 15 / 6 * 1 - 7 % 2));
+            ReadKeyAndClear();
         }
 
         private static void BasicExercise5()
@@ -68,6 +59,7 @@ namespace C_Sharp_Practice_Exercises
             double secondNumber = (double)GetNumberForSwap("second", 0);
             Console.WriteLine("First Number: {0}", secondNumber);
             Console.WriteLine("Second Number: {0}", firstNumber);
+            ReadKeyAndClear();
         }
 
         private static object GetNumberForSwap(string numNumber, int attempts)
@@ -97,6 +89,7 @@ namespace C_Sharp_Practice_Exercises
             for (int i = 1; i <= factors.Count; i++)
                 product *= factors[i].Value;
             Console.WriteLine("{0} * {1} * {2} = {3}", factors[1], factors[2], factors[3], product);
+            ReadKeyAndClear();
         }
 
         private static object GetFactor(string numFactor, int attempts)
@@ -120,6 +113,7 @@ namespace C_Sharp_Practice_Exercises
             Console.WriteLine("{0} * {1} = {2}", numOne, numTwo, numOne * numTwo);
             Console.WriteLine("{0} / {1} = {2}", numOne, numTwo, numOne / numTwo);
             Console.WriteLine("{0} mod {1} = {2}", numOne, numTwo, numOne % numTwo);
+            ReadKeyAndClear();
         }
 
         private static object GetAddSubtractMultiplyDivideModNumber(string numNumber, int attempts)
@@ -139,6 +133,7 @@ namespace C_Sharp_Practice_Exercises
             double multNum = (double)GetMultiplier(0);
             for (var i = 0; i <= 10; i++)
                 Console.WriteLine("{0} * {1} = {2}", multNum, i, multNum * i);
+            ReadKeyAndClear();
         }
 
         private static object GetMultiplier(int attempts)
@@ -160,6 +155,7 @@ namespace C_Sharp_Practice_Exercises
             double avThree = (double)GetNumberForAverage("third", 0);
             double avFour = (double)GetNumberForAverage("fourth", 0);
             Console.WriteLine("The average of {0}, {1}, {2} and {3} is: {4}", avOne, avTwo, avThree, avFour, (avOne + avTwo + avThree + avFour) / 4);
+            ReadKeyAndClear();
         }
 
         private static object GetNumberForAverage(string numNumber, int attempts)
@@ -180,6 +176,7 @@ namespace C_Sharp_Practice_Exercises
             double secondNum = (double)GetNumberForWonkyEquation("second", 0);
             double thirdNum = (double)GetNumberForWonkyEquation("third", 0);
             Console.WriteLine("Result of specified numbers {0}, {1} and {2} is: ({0} + {1}) * {2} = {3} and {0} * {1} + {1} * {2} = {4}", firstNum, secondNum, thirdNum, (firstNum + secondNum) * thirdNum, firstNum * secondNum + secondNum * thirdNum);
+            ReadKeyAndClear();
         }
 
         private static object GetNumberForWonkyEquation(string numNumber, int attempts)
@@ -194,8 +191,12 @@ namespace C_Sharp_Practice_Exercises
                 return GetNumberForWonkyEquation(numNumber, ++attempts);
         }
 
-        private static void BasicExercise11() =>
+        private static void BasicExercise11()
+        {
             Console.WriteLine("You look older than {0}", GetAge(0));
+            ReadKeyAndClear();
+        }
+            
 
         private static object GetAge(int attempts)
         {
@@ -217,6 +218,7 @@ namespace C_Sharp_Practice_Exercises
                     Console.WriteLine("{0} {0} {0} {0}", num);
                 else
                     Console.WriteLine("{0}{0}{0}{0}", num);
+            ReadKeyAndClear();
         }
 
         private static object GetPatternNumber(int attempts)
@@ -239,6 +241,7 @@ namespace C_Sharp_Practice_Exercises
                     Console.WriteLine("{0}{0}{0}", num);
                 else
                     Console.WriteLine("{0} {0}", num);
+            ReadKeyAndClear();
         }
 
         private static object GetRectangleNumber(int attempts)
@@ -258,6 +261,7 @@ namespace C_Sharp_Practice_Exercises
             double celsTemp = (double)GetCelsiusTemp(0);
             Console.WriteLine("Kelvin = {0}", celsTemp + 273.15);
             Console.WriteLine("Fahrenheit = {0}", celsTemp * 1.8 + 32);
+            ReadKeyAndClear();
         }
 
         private static object GetCelsiusTemp(int attempts)
