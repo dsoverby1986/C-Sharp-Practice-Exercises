@@ -14,7 +14,6 @@ namespace C_Sharp_Practice_Exercises
         {
             ExecuteAllBasicExercises();
             ExecuteAllDataTypeExercises();
-            Console.ReadKey();
         }
     }
 }

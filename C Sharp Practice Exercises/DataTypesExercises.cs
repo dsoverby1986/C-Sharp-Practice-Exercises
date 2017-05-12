@@ -18,6 +18,7 @@ namespace C_Sharp_Practice_Exercises
             DataTypeExercise5();
             DataTypeExercise6();
             DataTypeExercise7();
+            DataTypeExercise8();
         }
         
         private static void DataTypeExercise1()
@@ -37,8 +38,7 @@ namespace C_Sharp_Practice_Exercises
             char letter = new char();
             if (char.TryParse(Console.ReadLine(), out letter) && Regex.IsMatch(letter.ToString(), @"^[a-zA-Z]+$"))
                 return letter;
-            else
-                return GetLetter(numNumber, ++attempts);
+            return GetLetter(numNumber, ++attempts);
         }
 
         private static void DataTypeExercise2()
@@ -63,8 +63,7 @@ namespace C_Sharp_Practice_Exercises
             double num = 0;
             if (double.TryParse(Console.ReadLine(), out num))
                 return num;
-            else
-                return GetTriangleNumber(++attempts);
+            return GetTriangleNumber(++attempts);
         }
 
         private static object GetTriangleWidth(int attempts)
@@ -75,8 +74,7 @@ namespace C_Sharp_Practice_Exercises
             int num = 0;
             if (Int32.TryParse(Console.ReadLine(), out num) && num > 1)
                 return num;
-            else
-                return GetTriangleWidth(++attempts);
+            return GetTriangleWidth(++attempts);
         }
 
         private static void DataTypeExercise3()
@@ -162,8 +160,7 @@ namespace C_Sharp_Practice_Exercises
             double num = 0;
             if (double.TryParse(Console.ReadLine(), out num))
                 return num;
-            else
-                return GetOperationNumber(numNumber, ++attempts);
+            return GetOperationNumber(numNumber, ++attempts);
         }
 
         private static object GetOperationSymbol(int attempts)
@@ -174,8 +171,7 @@ namespace C_Sharp_Practice_Exercises
             char operationSymbol = new char();
             if (char.TryParse(Console.ReadLine(), out operationSymbol) && Regex.IsMatch(operationSymbol.ToString(), @"[-+*/%]+$"))
                 return operationSymbol;
-            else
-                return GetOperationSymbol(++attempts);
+            return GetOperationSymbol(++attempts);
         }
 
         private static void DataTypeExercise5()
@@ -195,8 +191,7 @@ namespace C_Sharp_Practice_Exercises
             double radius = 0;
             if (double.TryParse(Console.ReadLine(), out radius))
                 return radius;
-            else
-                return GetCircleRadius(++attempts);
+            return GetCircleRadius(++attempts);
         }
 
         private static void DataTypeExercise6()
@@ -220,8 +215,7 @@ namespace C_Sharp_Practice_Exercises
                     return true;
                 return false;
             }
-            else
-                return UserWantsToTryForAnotherNumber(++attempts);
+            return UserWantsToTryForAnotherNumber(++attempts);
         }
 
         private static void DataTypeExercise7()
@@ -254,8 +248,7 @@ namespace C_Sharp_Practice_Exercises
             double distance = 0;
             if (double.TryParse(Console.ReadLine(), out distance))
                 return distance;
-            else
-                return GetDistance(++attempts);
+            return GetDistance(++attempts);
         }
 
         private static object GetTime(string type, int attempts)
@@ -266,8 +259,7 @@ namespace C_Sharp_Practice_Exercises
             int time = 0;
             if (Int32.TryParse(Console.ReadLine(), out time) && time > 0)
                 return time;
-            else
-                return GetTime(type, ++attempts);
+            return GetTime(type, ++attempts);
         }
 
         private static double CalculateHours(int hours, int minutes, int seconds)
@@ -278,5 +270,25 @@ namespace C_Sharp_Practice_Exercises
 
         private static double CalculateSeconds(double hours) =>
             hours * 3600;
+
+        private static void DataTypeExercise8()
+        {
+            Console.WriteLine("Let's get the surface area and volume of a sphere, based on it's radius.");
+            double radius = (double)GetSphereRadius(0);
+            Console.WriteLine("\nThe surface area of the sphere is {0}", 4 * Math.PI * (radius * radius));
+            Console.WriteLine("The volume of the sphere is {0}", (4 / 3) * Math.PI * (radius * radius * radius));
+            ReadKeyAndClear();
+        }
+
+        private static object GetSphereRadius(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nSweetheart, I said enter a number for the radius. Try again!");
+            Console.WriteLine("\nEnter a number for the radius of the sphere...");
+            double radius = 0;
+            if (double.TryParse(Console.ReadLine(), out radius))
+                return radius;
+            return GetSphereRadius(++attempts);
+        }
     }
 }
