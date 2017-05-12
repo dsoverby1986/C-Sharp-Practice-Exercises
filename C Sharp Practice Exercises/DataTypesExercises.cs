@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C_Sharp_Practice_Exercises.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace C_Sharp_Practice_Exercises
             DataTypeExercise6();
             DataTypeExercise7();
             DataTypeExercise8();
+            DataTypeExercise9();
         }
         
         private static void DataTypeExercise1()
@@ -289,6 +291,44 @@ namespace C_Sharp_Practice_Exercises
             if (double.TryParse(Console.ReadLine(), out radius))
                 return radius;
             return GetSphereRadius(++attempts);
+        }
+
+        private static void DataTypeExercise9()
+        {
+            char _char = (char)GetCharacter(0);
+            string analysis = "\n" + _char.GetAnalysis();
+            Console.WriteLine(analysis);
+            bool tryAnother = CheckIfUserWantsToTryAnotherCharacter(0);
+            if (tryAnother)
+            {
+                Console.Clear();
+                DataTypeExercise9();
+            }
+            ReadKeyAndClear();
+        }
+
+        private static object GetCharacter(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nHey little baby, I said enter a single character. So, just do that.\n");
+            Console.WriteLine("Enter a single character to have it's general description analyzed...");
+            char _char = new char();
+            if (char.TryParse(Console.ReadLine(), out _char))
+                return _char;
+            return GetCharacter(++attempts);
+        }
+
+        private static bool CheckIfUserWantsToTryAnotherCharacter(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nI didn't catch that. Say again...");
+            Console.WriteLine("\nWould you like to try another character? (y/n)");
+            string response = Console.ReadLine().ToLower();
+            if (response == "y" || response == "yes")
+                return true;
+            else if (response == "n" || response == "no")
+                return false;
+            return CheckIfUserWantsToTryAnotherCharacter(++attempts);
         }
     }
 }
