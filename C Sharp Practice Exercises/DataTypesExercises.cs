@@ -21,6 +21,7 @@ namespace C_Sharp_Practice_Exercises
             DataTypeExercise7();
             DataTypeExercise8();
             DataTypeExercise9();
+            DataTypeExercise10();
         }
         
         private static void DataTypeExercise1()
@@ -183,6 +184,7 @@ namespace C_Sharp_Practice_Exercises
             double area = Math.PI * (radius * radius);
             Console.WriteLine($"\nThe circumference of the circle, based on the provided radius, is {circumference}");
             Console.WriteLine($"\nThe area of the circle, based on the provided radius, is {area}");
+            ReadKeyAndClear();
         }
 
         private static object GetCircleRadius(int attempts)
@@ -203,13 +205,14 @@ namespace C_Sharp_Practice_Exercises
             Console.WriteLine($"{(y * y) + 2 * y + 1} = {y}\xB2 + 2({y}) + 1");
             if ((bool)UserWantsToTryForAnotherNumber(0))
                 DataTypeExercise6();
+            Console.Clear();
         }
 
         private static object UserWantsToTryForAnotherNumber(int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("\nPlease answer with 'y' or 'n'.\n");
-            Console.WriteLine("Want to try a different number?");
+                Console.WriteLine("\nPlease answer with 'y' or 'n' only.\n");
+            Console.WriteLine("Want to try a different number? (y/n)");
             char answer = new char();
             if (char.TryParse(Console.ReadLine(), out answer) && Regex.IsMatch(answer.ToString(), @"[yn]+$"))
             {
@@ -329,6 +332,65 @@ namespace C_Sharp_Practice_Exercises
             else if (response == "n" || response == "no")
                 return false;
             return CheckIfUserWantsToTryAnotherCharacter(++attempts);
+        }
+
+        private static void DataTypeExercise10()
+        {
+            Console.WriteLine("I want you to enter two numbers and I will tell you whether or not they are both odd or even.");
+            TwoNumbers twoNums = new TwoNumbers();
+            Console.WriteLine("\n" + twoNums.Analysis);
+            ReadKeyAndClear();
+        }
+
+        private class TwoNumbers
+        {
+            public TwoNumbers()
+            {
+                FirstNumber = (int)GetOddEvenNumber("first", 0);
+                SecondNumber = (int)GetOddEvenNumber("second", 0);
+                Analysis = AnalyzeNumbers();
+            }
+
+            private int FirstNumber;
+            private int SecondNumber;
+            public string Analysis { get; set; }
+
+            Dictionary<int, string> possibleAnalyses = new Dictionary<int, string>()
+            {
+                { 0, "Both numbers are odd" },
+                { 1, "Both numbers are even" },
+                { 2, "One number is odd and one number is even" }
+            };
+
+            private enum Analyses
+            {
+                ODD,
+                EVEN,
+                MIXED
+            };
+
+            private static object GetOddEvenNumber(string numNumber, int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nHey honey, I wanted you to enter a whole number. So, just give me that number, babe.");
+                Console.WriteLine("\nEnter the {0} whole number...", numNumber);
+                int num = 0;
+                if (Int32.TryParse(Console.ReadLine(), out num))
+                    return num;
+                return GetOddEvenNumber(numNumber, ++attempts);
+            }
+
+            private string AnalyzeNumbers()
+            {
+                int result;
+                if (FirstNumber % 2 == 0 && SecondNumber % 2 == 0)
+                    result = (int)Analyses.EVEN;
+                else if (FirstNumber % 2 != 0 && SecondNumber % 2 != 0)
+                    result = (int)Analyses.ODD;
+                else
+                    result = (int)Analyses.MIXED;
+                return possibleAnalyses[result];
+            }
         }
     }
 }
