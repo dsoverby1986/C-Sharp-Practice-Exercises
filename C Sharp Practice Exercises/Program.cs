@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static C_Sharp_Practice_Exercises.BasicExercises;
 using static C_Sharp_Practice_Exercises.DataTypesExercises;
+using static C_Sharp_Practice_Exercises.ConditionalStatementsExercises;
 
 namespace C_Sharp_Practice_Exercises
 {
@@ -14,6 +15,7 @@ namespace C_Sharp_Practice_Exercises
         {
             ExecuteAllBasicExercises();
             ExecuteAllDataTypeExercises();
+            ExecuteAllConditionalStatementsExercises();
         }
     }
 }

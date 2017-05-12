@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicExercises.cs" />
+    <Compile Include="ConditionalStatementsExercises.cs" />
     <Compile Include="ConsoleReadKeyClearBehavior.cs" />
     <Compile Include="DataTypesExercises.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
