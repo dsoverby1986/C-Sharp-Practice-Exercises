@@ -22,6 +22,7 @@ namespace C_Sharp_Practice_Exercises
             DataTypeExercise8();
             DataTypeExercise9();
             DataTypeExercise10();
+            DataTypeExercise11();
         }
         
         private static void DataTypeExercise1()
@@ -391,6 +392,24 @@ namespace C_Sharp_Practice_Exercises
                     result = (int)Analyses.MIXED;
                 return possibleAnalyses[result];
             }
+        }
+
+        private static void DataTypeExercise11()
+        {
+            int num = (int)GetNumberToConvert(0);
+            Console.WriteLine("\n{0}", Convert.ToString(num, 2));
+            ReadKeyAndClear();
+        }
+
+        private static int GetNumberToConvert(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nListen honey babydoll sweet cheeks, I just wanted you to do one thing and you couldn't even do that!\n");
+            Console.WriteLine("Enter a number to get it's binary form...");
+            int num = 0;
+            if (Int32.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetNumberToConvert(++attempts);
         }
     }
 }
