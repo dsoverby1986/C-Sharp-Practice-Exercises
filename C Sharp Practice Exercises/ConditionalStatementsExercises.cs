@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace C_Sharp_Practice_Exercises
 {
@@ -15,7 +11,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise2();
             ConditionalStatementExercise3();
             ConditionalStatementExercise4();
-            //ConditionalStatementExercise5();
+            ConditionalStatementExercise5();
             //ConditionalStatementExercise6();
             //ConditionalStatementExercise7();
             //ConditionalStatementExercise8();
@@ -164,7 +160,20 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise5()
         {
-            throw new NotImplementedException();
+            int age = (int)GetAge(0);
+            Console.WriteLine("\nYou are {0}eligible to vote", age < 18 ? "not " : "");
+            ReadKeyAndClear();
+        }
+
+        private static object GetAge(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine("Enter your age to check voting eligibility...\n");
+            int age = 0;
+            if (Int32.TryParse(Console.ReadLine(), out age))
+                return age;
+            return GetAge(++attempts);
         }
 
         private static void ConditionalStatementExercise6()
