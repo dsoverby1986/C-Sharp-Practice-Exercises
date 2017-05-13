@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace C_Sharp_Practice_Exercises
@@ -13,7 +14,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise1();
             ConditionalStatementExercise2();
             ConditionalStatementExercise3();
-            //ConditionalStatementExercise4();
+            ConditionalStatementExercise4();
             //ConditionalStatementExercise5();
             //ConditionalStatementExercise6();
             //ConditionalStatementExercise7();
@@ -115,7 +116,50 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise4()
         {
-            throw new NotImplementedException();
+            int year = (int)GetYear(0);
+            bool isLeapYear = DetermineIfYearIsLeap(year);
+            Console.WriteLine("\n{0} is {1}a leap year", year, isLeapYear ? "" : "not ");
+            bool tryAnother = (bool)UserWantsToDoAnotherYear(0);
+            Console.Clear();
+            if (tryAnother)
+                ConditionalStatementExercise4();
+        }
+
+        private static object GetYear(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter a year and I will tell you if it is a leap year or not...\n");
+            int year = 0;
+            if (Int32.TryParse(Console.ReadLine(), out year))
+                return year;
+            return GetYear(++attempts);
+        }
+
+        private static bool DetermineIfYearIsLeap(int year)
+        {
+            if (year % 4 == 0)
+                if (year % 100 == 0)
+                {
+                    if (year % 400 == 0)
+                        return true;
+                }
+                else
+                    return true;
+            return false;
+        }
+
+        private static object UserWantsToDoAnotherYear(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour response didn't make sense. Try again.\n");
+            Console.WriteLine("\nWould you like to try another year? (y/n)\n");
+            string response = Console.ReadLine().ToLower();
+            if (Regex.IsMatch(response, @"\b(y|yes)\b"))
+                return true;
+            else if (Regex.IsMatch(response, @"\b(n|no)\b"))
+                return false;
+            return UserWantsToDoAnotherYear(++attempts);
         }
 
         private static void ConditionalStatementExercise5()
