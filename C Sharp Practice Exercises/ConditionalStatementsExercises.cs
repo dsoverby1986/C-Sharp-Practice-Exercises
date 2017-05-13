@@ -11,6 +11,30 @@ namespace C_Sharp_Practice_Exercises
         public static void ExecuteAllConditionalStatementsExercises()
         {
             ConditionalStatementExercise1();
+            ConditionalStatementExercise2();
+            ConditionalStatementExercise3();
+            //ConditionalStatementExercise4();
+            //ConditionalStatementExercise5();
+            //ConditionalStatementExercise6();
+            //ConditionalStatementExercise7();
+            //ConditionalStatementExercise8();
+            //ConditionalStatementExercise9();
+            //ConditionalStatementExercise10();
+            //ConditionalStatementExercise11();
+            //ConditionalStatementExercise12();
+            //ConditionalStatementExercise13();
+            //ConditionalStatementExercise14();
+            //ConditionalStatementExercise15();
+            //ConditionalStatementExercise16();
+            //ConditionalStatementExercise17();
+            //ConditionalStatementExercise18();
+            //ConditionalStatementExercise19();
+            //ConditionalStatementExercise20();
+            //ConditionalStatementExercise21();
+            //ConditionalStatementExercise22();
+            //ConditionalStatementExercise23();
+            //ConditionalStatementExercise24();
+            //ConditionalStatementExercise25();
         }
 
         private static void ConditionalStatementExercise1()
@@ -31,6 +55,172 @@ namespace C_Sharp_Practice_Exercises
             if (double.TryParse(Console.ReadLine(), out num))
                 return num;
             return GetNumberToEqual(numNumber, ++attempts);
+        }
+
+        private static void ConditionalStatementExercise2()
+        {
+            int num = (int)GetOddEvenNumber(0);
+            Console.WriteLine("\n{0} is an {1} integer", num, num % 2 == 0 ? "even" : "odd");
+            ReadKeyAndClear();
+        }
+
+        private static object GetOddEvenNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYou didn't follow the instructions that I gave you. Try again.\n");
+            Console.WriteLine("Enter a whole number and I will tell you whether it's odd or even...\n");
+            int num = 0;
+            if (Int32.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetOddEvenNumber(++attempts);
+        }
+
+        private static void ConditionalStatementExercise3()
+        {
+            double num = (double)GetPositiveNegativeNumber(0);
+            Console.WriteLine("\n{0} is a {1} number", num, num > 0 ? "positive" : num == 0 ? "unsigned" : "negative");
+            bool userWantsToGoAgain = (bool)UserWantsToGoAgain(0);
+            if(userWantsToGoAgain)
+            {
+                Console.Clear();
+                ConditionalStatementExercise3();
+            }
+            Console.Clear();
+        }
+
+        private static object GetPositiveNegativeNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYou didn't enter a number. Try again.\n");
+            Console.WriteLine("Enter a number and I will tell you whether it's positive or negative...\n");
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetPositiveNegativeNumber(++attempts);
+        }
+
+        private static object UserWantsToGoAgain(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour response did not make sense. Try again.\n");
+            Console.WriteLine("\nWould you like to try another number? (y/n)\n");
+            string response = Console.ReadLine().ToLower();
+            if (response == "y" || response == "yes")
+                return true;
+            else if (response == "n" || response == "no")
+                return false;
+            return UserWantsToGoAgain(++attempts);
+
+        }
+
+        private static void ConditionalStatementExercise4()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise5()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise6()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise7()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise8()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise9()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise10()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise11()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise12()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise13()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise14()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise15()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise16()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise17()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise18()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise19()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise20()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise21()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise22()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise23()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise24()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ConditionalStatementExercise25()
+        {
+            throw new NotImplementedException();
         }
     }
 }
