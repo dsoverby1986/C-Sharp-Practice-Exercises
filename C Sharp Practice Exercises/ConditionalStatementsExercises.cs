@@ -13,7 +13,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise4();
             ConditionalStatementExercise5();
             ConditionalStatementExercise6();
-            //ConditionalStatementExercise7();
+            ConditionalStatementExercise7();
             //ConditionalStatementExercise8();
             //ConditionalStatementExercise9();
             //ConditionalStatementExercise10();
@@ -212,7 +212,20 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise7()
         {
-            throw new NotImplementedException();
+            double height = (double)GetUsersHeight(0);
+            Console.WriteLine("\nYou're a {0}", height <= 147 ? "dwarf" : height >= 213.36 ? "giant" : "person of standard height");
+            ReadKeyAndClear();
+        }
+
+        private static object GetUsersHeight(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter your height in centimeters and I will categorize your height...\n");
+            double height = 0;
+            if (double.TryParse(Console.ReadLine(), out height))
+                return height;
+            return GetUsersHeight(++attempts);
         }
 
         private static void ConditionalStatementExercise8()
