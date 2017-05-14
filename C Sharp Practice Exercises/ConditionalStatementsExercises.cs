@@ -12,7 +12,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise3();
             ConditionalStatementExercise4();
             ConditionalStatementExercise5();
-            //ConditionalStatementExercise6();
+            ConditionalStatementExercise6();
             //ConditionalStatementExercise7();
             //ConditionalStatementExercise8();
             //ConditionalStatementExercise9();
@@ -178,7 +178,36 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise6()
         {
-            throw new NotImplementedException();
+            double num = (double)GetRelativeNumber(0);
+            Console.WriteLine("\nThe value of n is {0}", num == 0 ? "0" : num > 0 ? "1" : "-1");
+            bool tryAnother = (bool)FindOutIfUserWantsToTryAnotherNumber(0);
+            Console.Clear();
+            if (tryAnother)
+                ConditionalStatementExercise6();
+        }
+
+        private static object GetRelativeNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter a number. If the number is greater than 0, 1 will be returned. If the number is 0, 0 will be returned. If the number is less than 0, -1 will be returned.\n");
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetRelativeNumber(++attempts);
+        }
+
+        private static object FindOutIfUserWantsToTryAnotherNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour reponse didn't make sense. Try again.\n");
+            Console.WriteLine("\nWould you like to try another number?\n");
+            string response = Console.ReadLine().ToLower();
+            if (Regex.IsMatch(response, @"\b(y|yes)\b"))
+                return true;
+            else if (Regex.IsMatch(response, @"\b(n|no)\b"))
+                return false;
+            return FindOutIfUserWantsToTryAnotherNumber(++attempts);
         }
 
         private static void ConditionalStatementExercise7()
