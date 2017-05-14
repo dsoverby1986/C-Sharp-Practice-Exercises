@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace C_Sharp_Practice_Exercises
@@ -14,7 +15,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise5();
             ConditionalStatementExercise6();
             ConditionalStatementExercise7();
-            //ConditionalStatementExercise8();
+            ConditionalStatementExercise8();
             //ConditionalStatementExercise9();
             //ConditionalStatementExercise10();
             //ConditionalStatementExercise11();
@@ -230,7 +231,46 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise8()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter three numbers and I will tell you which of them is the largest.");
+            double[] nums = new double[3];
+            Dictionary<int, string> ordinals = new Dictionary<int, string>()
+            {
+                { 0, "first" },
+                { 1, "second" },
+                { 2, "third" }
+            };
+            for (int i = 0; i < nums.Length; i++)
+                nums[i] = (double)GetNumberFromUser(ordinals[i], 0);
+            Array.Sort(nums);
+            Console.WriteLine("\nOf the numbers you entered, {0} is the largest.", nums[nums.Length - 1]);
+            bool userWantsToGoAgain = (bool)FindOutIfTheUserWantsToGoAgain(0);
+            Console.Clear();
+            if (userWantsToGoAgain)
+                ConditionalStatementExercise8();
+        }
+
+        private static object GetNumberFromUser(string numNumber, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input was invaild. Try again, please.");
+            Console.WriteLine("\nEnter the {0} number...\n", numNumber);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetNumberFromUser(numNumber, ++attempts);
+        }
+
+        private static object FindOutIfTheUserWantsToGoAgain(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour response didn't make any sense. Try again, please.");
+            Console.WriteLine("\nWould you like to try another three numbers? (y/n)\n");
+            string response = Console.ReadLine().ToLower();
+            if (Regex.IsMatch(response, @"\b(y|yes)\b"))
+                return true;
+            else if (Regex.IsMatch(response, @"\b(n|no)\b"))
+                return false;
+            return FindOutIfTheUserWantsToGoAgain(++attempts);
         }
 
         private static void ConditionalStatementExercise9()
