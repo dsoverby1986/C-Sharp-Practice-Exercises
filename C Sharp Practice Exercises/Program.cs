@@ -13,9 +13,11 @@ namespace C_Sharp_Practice_Exercises
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             ExecuteAllBasicExercises();
             ExecuteAllDataTypeExercises();
             ExecuteAllConditionalStatementsExercises();
+            Console.ResetColor();
         }
     }
 }
