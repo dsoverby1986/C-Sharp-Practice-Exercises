@@ -18,7 +18,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise7();
             ConditionalStatementExercise8();
             ConditionalStatementExercise9();
-            //ConditionalStatementExercise10();
+            ConditionalStatementExercise10();
             //ConditionalStatementExercise11();
             //ConditionalStatementExercise12();
             //ConditionalStatementExercise13();
@@ -314,7 +314,22 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise10()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter your marks in maths, physics and chemistry to have your eligibility for admission determined.");
+            List<double> factors = new List<double>(new double[] { (double)GetMarks("maths", 0), (double)GetMarks("physics", 0), (double)GetMarks("chemistry", 0) });
+            bool eligible = factors[0] >= 65 && factors[1] >= 55 && factors[2] >= 50 && (factors.Sum() >= 180 || factors[0] + factors[1] >=140);
+            Console.WriteLine("\nYou are {0}eligible for admission", eligible ? "" : "not ");
+            ReadKeyAndClear();
+        }
+
+        private static double GetMarks(string subject, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine("\nEnter your marks in {0}...\n", subject);
+            double marks = 0;
+            if (double.TryParse(Console.ReadLine(), out marks))
+                return marks;
+            return GetMarks(subject, ++attempts);
         }
 
         private static void ConditionalStatementExercise11()
