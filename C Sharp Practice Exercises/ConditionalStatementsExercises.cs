@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace C_Sharp_Practice_Exercises
@@ -16,7 +17,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise6();
             ConditionalStatementExercise7();
             ConditionalStatementExercise8();
-            //ConditionalStatementExercise9();
+            ConditionalStatementExercise9();
             //ConditionalStatementExercise10();
             //ConditionalStatementExercise11();
             //ConditionalStatementExercise12();
@@ -275,8 +276,41 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise9()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter an X coordinate and a Y coordinate and I will tell you the general location of their point.");
+            int quadX = GetQuadrantIndicator((double)GetCoordinate("X", 0));
+            int quadY = GetQuadrantIndicator((double)GetCoordinate("Y", 0));
+            string generalArea = generalAreas.First(q => q.Key[0] == quadX && q.Key[1] == quadY).Value;
+            Console.WriteLine("\nYour coordinates place the point {0}", generalArea);
+            ReadKeyAndClear();
         }
+
+        private static object GetCoordinate(string coord, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("\nEnter a number to represent the {0} coordinate\n", coord);
+            double coordNum = 0;
+            if (double.TryParse(Console.ReadLine(), out coordNum))
+                return coordNum;
+            return GetCoordinate(coord, ++attempts);
+        }
+        private static int GetQuadrantIndicator(double coord)
+        {
+            return coord != 0 ? (int)(coord / (coord * (coord > 0 ? 1 : -1))) : 0;
+        }
+
+        private static readonly Dictionary<int[], string> generalAreas = new Dictionary<int[], string>()
+        {
+            { new int[] { 0, 0 }, "on the axis" },
+            { new int[] { 0, 1 }, "in the northern hemisphere" },
+            { new int[] { 0, -1 }, "in the southern hemisphere" },
+            { new int[] { 1, 0 }, "in the eastern hemisphere" },
+            { new int[] { -1, 0 }, "in the western hemisphere" },
+            { new int[] { 1, 1 }, "in the first quadrant" },
+            { new int[] { 1, -1 }, "in the second quadrant" },
+            { new int[] { -1, -1 }, "in the third quadrant" },
+            { new int[] { -1, 1 }, "in the fourth quadrant" }
+        };
 
         private static void ConditionalStatementExercise10()
         {
