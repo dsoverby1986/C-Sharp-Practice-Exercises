@@ -10,6 +10,7 @@ namespace C_Sharp_Practice_Exercises
     {
         public static void ReadKeyAndClear()
         {
+            Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
             Console.Clear();
         }

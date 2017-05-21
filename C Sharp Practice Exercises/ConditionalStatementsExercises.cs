@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -20,7 +21,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise9();
             ConditionalStatementExercise10();
             ConditionalStatementExercise11();
-            //ConditionalStatementExercise12();
+            ConditionalStatementExercise12();
             //ConditionalStatementExercise13();
             //ConditionalStatementExercise14();
             //ConditionalStatementExercise15();
@@ -392,7 +393,73 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise12()
         {
-            throw new NotImplementedException();
+            string name = (string)GetStudentName(0);
+            int rollNum = (int)GetStudentRollNumber(0);
+            Dictionary<string, double> subjectMarks = new Dictionary<string, double>()
+            {
+                { "Physics", 0 },
+                { "Chemistry", 0 },
+                { "Computer Applications", 0 }
+            };
+            string[] indexer = new string[3] { "Physics", "Chemistry", "Computer Applications" };
+            for (int i = 0; i < subjectMarks.Count; i++)
+                subjectMarks[indexer[i]] = (double)GetSubjectMarks(indexer[i], 0);
+            double marksTotal = subjectMarks.Sum(m => m.Value);
+            double percentage = (marksTotal / subjectMarks.Count);
+            string division = GetDivision(percentage);
+            Console.WriteLine($"\nName of Student: {name}");
+            Console.WriteLine($"Student Roll #: {rollNum}");
+            foreach (KeyValuePair<string, double> subjectMark in subjectMarks)
+                Console.WriteLine($"Marks in {subjectMark.Key}: {subjectMark.Value}");
+            Console.WriteLine($"Total Marks: {marksTotal}");
+            Console.WriteLine($"Percentage: {percentage}");
+            Console.WriteLine($"Division: {division}");
+            ReadKeyAndClear();
+        }
+
+        private static object GetStudentName(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter the student's name...\n");
+            string response = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(response))
+                return response;
+            return GetStudentName(++attempts);
+        }
+
+        private static object GetStudentRollNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try Again.");
+            Console.WriteLine("\nEnter the student's roll number...\n");
+            int rollNum = 0;
+            if (Int32.TryParse(Console.ReadLine(), out rollNum))
+                return rollNum;
+            return GetStudentRollNumber(++attempts);
+        }
+
+        private static object GetSubjectMarks(string subject, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine($"\nEnter the student's marks for {subject}...\n");
+            double marks = 0;
+            if (double.TryParse(Console.ReadLine(), out marks))
+                return marks;
+            return GetSubjectMarks(subject, ++attempts);
+        }
+
+        private static string GetDivision(double percentage)
+        {
+            if (percentage >= 60)
+                return "First";
+            else if (percentage < 60 && percentage >= 48)
+                return "Second";
+            else if (percentage < 48 && percentage >= 36)
+                return "Pass";
+            else
+                return "Fail";
         }
 
         private static void ConditionalStatementExercise13()
