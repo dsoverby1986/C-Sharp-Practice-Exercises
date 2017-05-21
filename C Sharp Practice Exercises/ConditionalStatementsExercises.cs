@@ -19,7 +19,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise8();
             ConditionalStatementExercise9();
             ConditionalStatementExercise10();
-            //ConditionalStatementExercise11();
+            ConditionalStatementExercise11();
             //ConditionalStatementExercise12();
             //ConditionalStatementExercise13();
             //ConditionalStatementExercise14();
@@ -334,7 +334,60 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise11()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Input three numbers and I will use them to calculate the roots of a quadratic equation.");
+            Dictionary<string, double> quadNums = new Dictionary<string, double>()
+            {
+                { "a", 0 },
+                { "b", 0 },
+                { "c", 0 }
+            };
+            string[] indexer = new string[3] { "a", "b", "c" };
+            foreach (string index in indexer)
+                quadNums[index] = (double)GetQuadNumber(index, 0);
+            double rootA = GetRootOfQuadraticEquation(quadNums["a"], quadNums["b"], quadNums["c"], Operation.Addition);
+            double rootB = GetRootOfQuadraticEquation(quadNums["a"], quadNums["b"], quadNums["c"], Operation.Subtraction);
+            Console.WriteLine("\nThe roots of {0} are {1} and {2}", $"-{quadNums["b"]} \u00B1 \u221A" + $"({quadNums["b"]}\xB2 - 4({quadNums["a"]})(-{quadNums["c"]}))/(2({quadNums["a"]}))", rootA, rootB);
+            bool userWantsToDoAnother = (bool)FindOutIfTheUserWantsToDoAnother(0);
+            Console.Clear();
+            if (userWantsToDoAnother)
+                ConditionalStatementExercise11();
+        }
+
+        private static object GetQuadNumber(string varName, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try Again.");
+            Console.WriteLine("\nEnter the value for variable {0}...\n", varName);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetQuadNumber(varName, ++attempts);
+        }
+
+        private enum Operation
+        {
+            Addition,
+            Subtraction
+        };
+
+        private static double GetRootOfQuadraticEquation(double a, double b, double c, Operation op)
+        {
+            return op == Operation.Addition ?
+                ((b > 0 ? b * -1 : b) + Math.Sqrt((b * b) - 4 * a * (c > 0 ? c * -1 : c))) / (2 * a) :
+                ((b > 0 ? b * -1 : b) - Math.Sqrt((b * b) - 4 * a * (c > 0 ? c * -1 : c))) / (2 * a);
+        }
+
+        public static object FindOutIfTheUserWantsToDoAnother(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour response doesn't make any sense. Try again.");
+            Console.WriteLine("\nYou would like to try with a different set of numbers? (y/n)\n");
+            string response = Console.ReadLine().ToLower();
+            if (Regex.IsMatch(response, @"\b(y|yes)\b"))
+                return true;
+            else if (Regex.IsMatch(response, @"\b(n|no)\b"))
+                return false;
+            return FindOutIfTheUserWantsToDoAnother(++attempts);
         }
 
         private static void ConditionalStatementExercise12()
