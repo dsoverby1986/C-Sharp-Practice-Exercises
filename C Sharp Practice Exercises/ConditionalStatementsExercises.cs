@@ -22,7 +22,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise10();
             ConditionalStatementExercise11();
             ConditionalStatementExercise12();
-            //ConditionalStatementExercise13();
+            ConditionalStatementExercise13();
             //ConditionalStatementExercise14();
             //ConditionalStatementExercise15();
             //ConditionalStatementExercise16();
@@ -464,7 +464,35 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise13()
         {
-            throw new NotImplementedException();
+            double temp = (double)GetTemperature(0);
+            Console.WriteLine($"\nIt's {GetTemperatureMessage(temp)} weather");
+            ReadKeyAndClear();
+        }
+
+        private static object GetTemperature(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter the temperature in degrees farhenheit...\n");
+            double temp = 0;
+            if (double.TryParse(Console.ReadLine(), out temp))
+                return temp;
+            return GetTemperature(++attempts);
+        }
+
+        private static string GetTemperatureMessage(double temp)
+        {
+            if (temp < 32)
+                return "freezing";
+            else if (temp >= 32 && temp < 50)
+                return "very cold";
+            else if (temp >= 50 && temp < 68)
+                return "cold";
+            else if (temp >= 68 && temp < 86)
+                return "normal";
+            else if (temp >= 86 && temp < 104)
+                return "hot";
+            return "very hot";
         }
 
         private static void ConditionalStatementExercise14()
