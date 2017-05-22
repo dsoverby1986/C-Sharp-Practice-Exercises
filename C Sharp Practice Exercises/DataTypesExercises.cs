@@ -10,6 +10,94 @@ namespace C_Sharp_Practice_Exercises
 {
     class DataTypesExercises : ConsoleReadKeyClearBehavior
     {
+        public static void ShowDataTypeExerciseMenu()
+        {
+            Console.WriteLine("DATA TYPE EXERCISES\n\nChoose an option from the menu below:\n");
+            foreach (KeyValuePair<int, string> option in DataTypeExerciseMenuOptions)
+                Console.WriteLine($"{option.Key}.) {option.Value}");
+            Console.WriteLine();
+            NavigateUsersRequest();
+        }
+
+        private static readonly Dictionary<int, string> DataTypeExerciseMenuOptions = new Dictionary<int, string>()
+        {
+            { 1, "Execute Data Type Exercise 1" },
+            { 2, "Execute Data Type Exercise 2" },
+            { 3, "Execute Data Type Exercise 3" },
+            { 4, "Execute Data Type Exercise 4" },
+            { 5, "Execute Data Type Exercise 5" },
+            { 6, "Execute Data Type Exercise 6" },
+            { 7, "Execute Data Type Exercise 7" },
+            { 8, "Execute Data Type Exercise 8" },
+            { 9, "Execute Data Type Exercise 9" },
+            { 10, "Execute Data Type Exercise 10" },
+            { 11, "Execute Data Type Exercise 11" },
+            { 12, "Execute All Data Type Exercises" },
+            { 13, "Return to the Main Menu" }
+        };
+
+        private static void NavigateUsersRequest()
+        {
+            int request = (int)GetUsersRequest(0);
+            switch (request)
+            {
+                case 1:
+                    DataTypeExercise1();
+                    break;
+                case 2:
+                    DataTypeExercise2();
+                    break;
+                case 3:
+                    DataTypeExercise3();
+                    break;
+                case 4:
+                    DataTypeExercise4();
+                    break;
+                case 5:
+                    DataTypeExercise5();
+                    break;
+                case 6:
+                    DataTypeExercise6();
+                    break;
+                case 7:
+                    DataTypeExercise7();
+                    break;
+                case 8:
+                    DataTypeExercise8();
+                    break;
+                case 9:
+                    DataTypeExercise9();
+                    break;
+                case 10:
+                    DataTypeExercise10();
+                    break;
+                case 11:
+                    DataTypeExercise11();
+                    break;
+                case 12:
+                    ExecuteAllDataTypeExercises();
+                    break;
+                case 13:
+                    Program.Main(new string[] { });
+                    break;
+                default:
+                    Console.Clear();
+                    ReadKeyAndClear();
+                    ShowDataTypeExerciseMenu();
+                    break;
+            }
+        }
+
+        private static object GetUsersRequest(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("Your input is invalid. Try again.");
+            int request = 0;
+            if (Int32.TryParse(Console.ReadLine(), out request) && DataTypeExerciseMenuOptions.Keys.Contains(request))
+                return request;
+            return GetUsersRequest(++attempts);
+        }
+
         public static void ExecuteAllDataTypeExercises()
         {
             DataTypeExercise1();

@@ -9,6 +9,149 @@ namespace C_Sharp_Practice_Exercises
 {
     class ConditionalStatementsExercises : ConsoleReadKeyClearBehavior
     {
+        public static void ShowConditionalStatementsExerciseMenu()
+        {
+            Console.WriteLine("CONDITIONAL STATEMENT EXERCISES\n\nChoose an option from the menu below:\n\n");
+            foreach (KeyValuePair<int, string> option in ConditionalStatementExerciseMenuOptions)
+                Console.WriteLine($"{option.Key}.) {option.Value}");
+            NavigateUsersRequest();
+        }
+
+        private static readonly Dictionary<int, string> ConditionalStatementExerciseMenuOptions = new Dictionary<int, string>()
+        {
+            { 1, "Execute Conditional Statement Exercise 1" },
+            { 2, "Execute Conditional Statement Exercise 2" },
+            { 3, "Execute Conditional Statement Exercise 3" },
+            { 4, "Execute Conditional Statement Exercise 4" },
+            { 5, "Execute Conditional Statement Exercise 5" },
+            { 6, "Execute Conditional Statement Exercise 6" },
+            { 7, "Execute Conditional Statement Exercise 7" },
+            { 8, "Execute Conditional Statement Exercise 8" },
+            { 9, "Execute Conditional Statement Exercise 9" },
+            { 10, "Execute Conditional Statement Exercise 10" },
+            { 11, "Execute Conditional Statement Exercise 11" },
+            { 12, "Execute Conditional Statement Exercise 12" },
+            { 13, "Execute Conditional Statement Exercise 13" },
+            { 14, "Execute Conditional Statement Exercise 14" },
+            { 15, "Execute Conditional Statement Exercise 15" },
+            { 16, "Execute Conditional Statement Exercise 16" },
+            { 17, "Execute Conditional Statement Exercise 17" },
+            { 18, "Execute Conditional Statement Exercise 18" },
+            { 19, "Execute Conditional Statement Exercise 19" },
+            { 20, "Execute Conditional Statement Exercise 20" },
+            { 21, "Execute Conditional Statement Exercise 21" },
+            { 22, "Execute Conditional Statement Exercise 22" },
+            { 23, "Execute Conditional Statement Exercise 23" },
+            { 24, "Execute Conditional Statement Exercise 24" },
+            { 25, "Execute Conditional Statement Exercise 25" },
+            { 26, "Execute all Conditional Statement Exercises" },
+            { 27, "Return to the Main Menu" }
+        };
+
+        private static void NavigateUsersRequest()
+        {
+            int request = (int)GetUsersRequest(0);
+            switch (request)
+            {
+                case 1:
+                    ConditionalStatementExercise1();
+                    break;
+                case 2:
+                    ConditionalStatementExercise2();
+                    break;
+                case 3:
+                    ConditionalStatementExercise3();
+                    break;
+                case 4:
+                    ConditionalStatementExercise4();
+                    break;
+                case 5:
+                    ConditionalStatementExercise5();
+                    break;
+                case 6:
+                    ConditionalStatementExercise6();
+                    break;
+                case 7:
+                    ConditionalStatementExercise7();
+                    break;
+                case 8:
+                    ConditionalStatementExercise8();
+                    break;
+                case 9:
+                    ConditionalStatementExercise9();
+                    break;
+                case 10:
+                    ConditionalStatementExercise10();
+                    break;
+                case 11:
+                    ConditionalStatementExercise11();
+                    break;
+                case 12:
+                    ConditionalStatementExercise12();
+                    break;
+                case 13:
+                    ConditionalStatementExercise13();
+                    break;
+                case 14:
+                    ConditionalStatementExercise14();
+                    break;
+                case 15:
+                    ConditionalStatementExercise15();
+                    break;
+                case 16:
+                    ConditionalStatementExercise16();
+                    break;
+                case 17:
+                    ConditionalStatementExercise17();
+                    break;
+                case 18:
+                    ConditionalStatementExercise18();
+                    break;
+                case 19:
+                    ConditionalStatementExercise19();
+                    break;
+                case 20:
+                    ConditionalStatementExercise20();
+                    break;
+                case 21:
+                    ConditionalStatementExercise21();
+                    break;
+                case 22:
+                    ConditionalStatementExercise22();
+                    break;
+                case 23:
+                    ConditionalStatementExercise23();
+                    break;
+                case 24:
+                    ConditionalStatementExercise24();
+                    break;
+                case 25:
+                    ConditionalStatementExercise25();
+                    break;
+                case 26:
+                    ExecuteAllConditionalStatementsExercises();
+                    break;
+                case 27:
+                    Program.Main(new string[] { });
+                    break;
+                default:
+                    Console.Clear();
+                    ReadKeyAndClear();
+                    ShowConditionalStatementsExerciseMenu();
+                    break;
+            }
+        }
+
+        private static object GetUsersRequest(int attempts)
+        {
+            if(attempts > 0)
+                Console.WriteLine("Your input is invalid. Try again.");
+            int request = 0;
+            if (Int32.TryParse(Console.ReadLine(), out request) && ConditionalStatementExerciseMenuOptions.Keys.Contains(request))
+                return request;
+            return GetUsersRequest(++attempts);
+        }
+
         public static void ExecuteAllConditionalStatementsExercises()
         {
             ConditionalStatementExercise1();

@@ -8,6 +8,111 @@ namespace C_Sharp_Practice_Exercises
 {
     class BasicExercises : ConsoleReadKeyClearBehavior
     {
+        public static void ShowBasicExerciseMenu()
+        {
+            Console.WriteLine("BASIC EXERCISES\n\nChoose an option from the menu below:\n");
+            foreach (KeyValuePair<int, string> option in BasicExerciseMenuOptions)
+                Console.WriteLine($"{option.Key}.) {option.Value}");
+            Console.WriteLine();
+            NavigateUsersRequest();
+        }
+
+        private static readonly Dictionary<int, string> BasicExerciseMenuOptions = new Dictionary<int, string>()
+        {
+            { 1, "Execute Basic Exercise 1" },
+            { 2, "Execute Basic Exercise 2" },
+            { 3, "Execute Basic Exercise 3" },
+            { 4, "Execute Basic Exercise 4" },
+            { 5, "Execute Basic Exercise 5" },
+            { 6, "Execute Basic Exercise 6" },
+            { 7, "Execute Basic Exercise 7" },
+            { 8, "Execute Basic Exercise 8" },
+            { 9, "Execute Basic Exercise 9" },
+            { 10, "Execute Basic Exercise 10" },
+            { 11, "Execute Basic Exercise 11" },
+            { 12, "Execute Basic Exercise 12" },
+            { 13, "Execute Basic Exercise 13" },
+            { 14, "Execute Basic Exercise 14" },
+            { 15, "Execute All Basic Exercises" },
+            { 16, "Go Back to Main Menu" }
+        };
+
+        private static void NavigateUsersRequest()
+        {
+            int request = (int)GetUsersRequest(0);
+            Console.Clear();
+            switch (request)
+            {
+                case 1:
+                    BasicExercise1();
+                    break;
+                case 2:
+                    BasicExercise2();
+                    break;
+                case 3:
+                    BasicExercise3();
+                    break;
+                case 4:
+                    BasicExercise4();
+                    break;
+                case 5:
+                    BasicExercise5();
+                    break;
+                case 6:
+                    BasicExercise6();
+                    break;
+                case 7:
+                    BasicExercise7();
+                    break;
+                case 8:
+                    BasicExercise8();
+                    break;
+                case 9:
+                    BasicExercise9();
+                    break;
+                case 10:
+                    BasicExercise10();
+                    break;
+                case 11:
+                    BasicExercise11();
+                    break;
+                case 12:
+                    BasicExercise12();
+                    break;
+                case 13:
+                    BasicExercise13();
+                    break;
+                case 14:
+                    BasicExercise14();
+                    break;
+                case 15:
+                    ExecuteAllBasicExercises();
+                    break;
+                case 16:
+                    Program.Main(new string[] { });
+                    break;
+                default:
+                    Console.Clear();
+                    ReadKeyAndClear();
+                    ShowBasicExerciseMenu();
+                    break;
+            }
+        }
+
+        private static object GetUsersRequest(int attempts)
+        {
+            if (attempts > 0)
+            {
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+                ReadKeyAndClear();
+                ShowBasicExerciseMenu();
+            }
+            int request = 0;
+            if (Int32.TryParse(Console.ReadLine(), out request) && BasicExerciseMenuOptions.Keys.Contains(request))
+                return request;
+            return GetUsersRequest(++attempts);
+        }
+
         public static void ExecuteAllBasicExercises()
         {
             BasicExercise1();
