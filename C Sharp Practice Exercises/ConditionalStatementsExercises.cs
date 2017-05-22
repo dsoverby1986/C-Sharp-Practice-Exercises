@@ -25,7 +25,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise12();
             ConditionalStatementExercise13();
             ConditionalStatementExercise14();
-            //ConditionalStatementExercise15();
+            ConditionalStatementExercise15();
             //ConditionalStatementExercise16();
             //ConditionalStatementExercise17();
             //ConditionalStatementExercise18();
@@ -539,7 +539,22 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise15()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Input the degrees of each angle to be included in a triangle and I will tell you if, with those angles, a triangle can be formed.");
+            double[] angles = new double[3] { (double)GetAngle("first", 0), (double)GetAngle("second", 0), (double)GetAngle("third", 0) };
+            bool validAngleSum = angles.Sum() == 180;
+            Console.WriteLine("\nWith the angles entered, a triangle can{0} be formed", validAngleSum ? "" : "not");
+            ReadKeyAndClear();
+        }
+
+        private static object GetAngle(string angleNum, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine($"\nEnter a number for the {angleNum} angle...\n");
+            double angle = 0;
+            if (double.TryParse(Console.ReadLine(), out angle) && angle > 0 && angle < 180)
+                return angle;
+            return GetAngle(angleNum, ++attempts);
         }
 
         private static void ConditionalStatementExercise16()
