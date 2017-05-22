@@ -26,7 +26,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise13();
             ConditionalStatementExercise14();
             ConditionalStatementExercise15();
-            //ConditionalStatementExercise16();
+            ConditionalStatementExercise16();
             //ConditionalStatementExercise17();
             //ConditionalStatementExercise18();
             //ConditionalStatementExercise19();
@@ -559,7 +559,66 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise16()
         {
-            throw new NotImplementedException();
+            char letter = (char)GetLetter(0);
+            Console.WriteLine($"\nThe letter {letter} is a {Alphabet[letter]}");
+            bool userWantsToDoAnotherLetter = (bool)FindOutIfTheUserWantsToDoAnotherLetter(0);
+            Console.Clear();
+            if (userWantsToDoAnotherLetter)
+                ConditionalStatementExercise16();
+        }
+
+        private static object GetLetter(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYou input is invalid. Try again.\n");
+            Console.WriteLine("Enter a letter and I will tell you if it is a vowel or a consonant...\n");
+            char letter = new char();
+            if (char.TryParse(Console.ReadLine().ToLower(), out letter) && Alphabet.Keys.Contains(letter))
+                return letter;
+            return GetLetter(++attempts);
+        }
+
+        private static readonly Dictionary<char, string> Alphabet = new Dictionary<char, string>()
+        {
+            { 'a', "vowel" },
+            { 'b', "consonant" },
+            { 'c', "consonant" },
+            { 'd', "consonant" },
+            { 'e', "vowel" },
+            { 'f', "consonant" },
+            { 'g', "consonant" },
+            { 'h', "consonant" },
+            { 'i', "vowel" },
+            { 'j', "consonant" },
+            { 'k', "consonant" },
+            { 'l', "consonant" },
+            { 'm', "consonant" },
+            { 'n', "consonant" },
+            { 'o', "vowel" },
+            { 'p', "consonant" },
+            { 'q', "consonant" },
+            { 'r', "consonant" },
+            { 's', "consonant" },
+            { 't', "consonant" },
+            { 'u', "vowel" },
+            { 'v', "consonant" },
+            { 'w', "consonant" },
+            { 'x', "consonant" },
+            { 'y', "vowel, sometimes" },
+            { 'z', "consonant" }
+        };
+
+        private static object FindOutIfTheUserWantsToDoAnotherLetter(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour response didn't make sense. Try again");
+            Console.WriteLine("\nWould you like to try another letter? (y/n)\n");
+            string response = Console.ReadLine().ToLower();
+            if (Regex.IsMatch(response, @"\b(y|yes)\b"))
+                return true;
+            else if (Regex.IsMatch(response, @"\b(n|no)\b"))
+                return false;
+            return FindOutIfTheUserWantsToDoAnotherLetter(++attempts);
         }
 
         private static void ConditionalStatementExercise17()
