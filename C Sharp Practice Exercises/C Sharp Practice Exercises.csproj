@@ -48,6 +48,7 @@
     <Compile Include="Consoleum.cs" />
     <Compile Include="DataTypesExercises.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

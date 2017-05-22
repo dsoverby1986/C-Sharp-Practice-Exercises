@@ -1,4 +1,5 @@
-﻿using System;
+﻿using C_Sharp_Practice_Exercises.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise11();
             ConditionalStatementExercise12();
             ConditionalStatementExercise13();
-            //ConditionalStatementExercise14();
+            ConditionalStatementExercise14();
             //ConditionalStatementExercise15();
             //ConditionalStatementExercise16();
             //ConditionalStatementExercise17();
@@ -497,7 +498,43 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise14()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter the length of each side of a triangle and I will tell you whether the triangle is iscosoles, equilateral or scalene");
+            double[] sides = new double[3];
+            for (int i = 0; i < sides.Length; i++)
+                sides[i] = (double)GetSide((i + 1).Ordinal(), 0);
+            int triangleType = GetTriangleType(sides);
+            Console.WriteLine("\nYou've input the data of {0} {1} triangle", triangleType == (int)TriangleTypes.isosceles || triangleType == (int)TriangleTypes.equilateral ? "an" : "a", triangleTypes[triangleType]);
+            ReadKeyAndClear();
+        }
+
+        private static object GetSide(string sideNum, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine($"\nEnter the length of the {sideNum} side...\n");
+            double side = 0;
+            if (double.TryParse(Console.ReadLine(), out side))
+                return side;
+            return GetSide(sideNum, ++attempts);
+        }
+
+        private static int GetTriangleType(double[] sides)
+        {
+            Array.Sort(sides);
+            if ((sides[0] == sides[1] && sides[1] != sides[2]) || (sides[0] != sides[1] && sides[1] == sides[2]))
+                return (int)TriangleTypes.isosceles;
+            if (sides[0] == sides[1] && sides[1] == sides[2])
+                return (int)TriangleTypes.equilateral;
+            return (int)TriangleTypes.scalene;
+        }
+
+        private static readonly string[] triangleTypes = { "isosceles", "equilateral", "scalene" };
+
+        private enum TriangleTypes
+        {
+            isosceles,
+            equilateral,
+            scalene
         }
 
         private static void ConditionalStatementExercise15()
