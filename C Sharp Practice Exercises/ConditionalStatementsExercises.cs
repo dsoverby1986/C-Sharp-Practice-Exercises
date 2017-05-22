@@ -27,7 +27,7 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise14();
             ConditionalStatementExercise15();
             ConditionalStatementExercise16();
-            //ConditionalStatementExercise17();
+            ConditionalStatementExercise17();
             //ConditionalStatementExercise18();
             //ConditionalStatementExercise19();
             //ConditionalStatementExercise20();
@@ -623,7 +623,23 @@ namespace C_Sharp_Practice_Exercises
 
         private static void ConditionalStatementExercise17()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter the cost incurred in obtaining/providing an item/service and the price paid by the customer and I will tell you the amount of loss or profit resulting from the transaction.");
+            double cost = (double)GetAmount("cost incurred", 0);
+            double charge = (double)GetAmount("price charged", 0);
+            bool profit = cost < charge;
+            Console.WriteLine("\nYou can book your {0} amount of ${1}", profit ? "profit" : "loss", charge - cost);
+            ReadKeyAndClear();
+        }
+
+        private static object GetAmount(string type, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again");
+            Console.WriteLine($"\nEnter the {type} by you...\n");
+            double amount = 0;
+            if (double.TryParse(Console.ReadLine(), out amount))
+                return amount;
+            return GetAmount(type, ++attempts);
         }
 
         private static void ConditionalStatementExercise18()
