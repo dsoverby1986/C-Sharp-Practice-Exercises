@@ -12,9 +12,9 @@ namespace C_Sharp_Practice_Exercises
     {
         public static void ShowDataTypeExerciseMenu()
         {
-            Console.WriteLine("DATA TYPE EXERCISES\n\nChoose an option from the menu below:\n");
+            Console.WriteLine("***DATA TYPE EXERCISES***\n\nChoose an option from the menu below:\n");
             foreach (KeyValuePair<int, string> option in DataTypeExerciseMenuOptions)
-                Console.WriteLine($"{option.Key}.) {option.Value}");
+                Console.WriteLine($"{(option.Key < 10 ? " " : "")}{option.Key}.) {option.Value}");
             Console.WriteLine();
             NavigateUsersRequest();
         }

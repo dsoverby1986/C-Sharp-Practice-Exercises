@@ -10,9 +10,9 @@ namespace C_Sharp_Practice_Exercises
     {
         public static void ShowBasicExerciseMenu()
         {
-            Console.WriteLine("BASIC EXERCISES\n\nChoose an option from the menu below:\n");
+            Console.WriteLine("***BASIC EXERCISES***\n\nChoose an option from the menu below:\n");
             foreach (KeyValuePair<int, string> option in BasicExerciseMenuOptions)
-                Console.WriteLine($"{option.Key}.) {option.Value}");
+                Console.WriteLine($"{(option.Key < 10 ? " " : "")}{option.Key}.) {option.Value}");
             Console.WriteLine();
             NavigateUsersRequest();
         }

@@ -37,7 +37,7 @@ namespace C_Sharp_Practice_Exercises
         {
             Console.WriteLine("***MAIN MENU***\n\nChoose an option from the menu to get started...\n");
             foreach (KeyValuePair<int, string> option in MainMenuOptions)
-                Console.WriteLine($"{option.Key}.) {option.Value}");
+                Console.WriteLine($"{(option.Key < 10 ? " " : "")}{option.Key}.) {option.Value}");
             Console.WriteLine();
             NavigateUsersRequest();
         }

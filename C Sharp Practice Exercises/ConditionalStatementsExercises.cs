@@ -11,9 +11,9 @@ namespace C_Sharp_Practice_Exercises
     {
         public static void ShowConditionalStatementsExerciseMenu()
         {
-            Console.WriteLine("CONDITIONAL STATEMENT EXERCISES\n\nChoose an option from the menu below:\n\n");
+            Console.WriteLine("***CONDITIONAL STATEMENT EXERCISES***\n\nChoose an option from the menu below:\n");
             foreach (KeyValuePair<int, string> option in ConditionalStatementExerciseMenuOptions)
-                Console.WriteLine($"{option.Key}.) {option.Value}");
+                Console.WriteLine($"{(option.Key < 10 ? " " : "")}{option.Key}.) {option.Value}");
             NavigateUsersRequest();
         }
 
@@ -790,44 +790,34 @@ namespace C_Sharp_Practice_Exercises
             return GetAmount(type, ++attempts);
         }
 
-        private static void ConditionalStatementExercise18()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise18() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise19()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise19() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise20()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise20() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise21()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise21() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise22()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise22() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise23()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise23() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise24()
-        {
-            throw new NotImplementedException();
-        }
+        private static void ConditionalStatementExercise24() =>
+            ExerciseNotComplete();
 
-        private static void ConditionalStatementExercise25()
+        private static void ConditionalStatementExercise25() =>
+            ExerciseNotComplete();
+
+        private static void ExerciseNotComplete()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("This exercise has not been completed yet, but thanks for dropping by!");
+            ReadKeyAndClear();
         }
     }
 }
