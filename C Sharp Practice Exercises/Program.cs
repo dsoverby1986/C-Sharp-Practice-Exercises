@@ -11,11 +11,13 @@ namespace C_Sharp_Practice_Exercises
 {
     class Program : ConsoleReadKeyClearBehavior
     {
+        public static bool ReturnToMainMenu { get; set; }
+
         public static void Main(string[] args)
         {
+            ReturnToMainMenu = false;
             Console.ForegroundColor = ConsoleColor.Green;
             ShowMainMenu();
-            NavigateUsersRequest();
             Console.ResetColor();
         }
 
@@ -27,7 +29,8 @@ namespace C_Sharp_Practice_Exercises
             { 4, "Execute all Basic Exercises" },
             { 5, "Execute all Data Type Exercises" },
             { 6, "Execute all Conditional Statements Exercises" },
-            { 7, "Execute All Exercises" }
+            { 7, "Execute All Exercises" },
+            { 8, "Exit" }
         };
 
         private static void ShowMainMenu()
@@ -55,16 +58,23 @@ namespace C_Sharp_Practice_Exercises
                     ShowConditionalStatementsExerciseMenu();
                     break;
                 case 4:
+                    ReturnToMainMenu = true;
                     ExecuteAllBasicExercises();
                     break;
                 case 5:
+                    ReturnToMainMenu = true;
                     ExecuteAllDataTypeExercises();
                     break;
                 case 6:
+                    ReturnToMainMenu = true;
                     ExecuteAllConditionalStatementsExercises();
                     break;
                 case 7:
+                    ReturnToMainMenu = true;
                     ExecuteAllExercises();
+                    break;
+                case 8:
+                    Environment.Exit(0);
                     break;
                 default:
                     Console.Clear();

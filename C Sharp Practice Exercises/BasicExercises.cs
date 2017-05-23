@@ -97,6 +97,10 @@ namespace C_Sharp_Practice_Exercises
                     ShowBasicExerciseMenu();
                     break;
             }
+            if (Program.ReturnToMainMenu)
+                Program.Main(new string[] { });
+            else
+                ShowBasicExerciseMenu();
         }
 
         private static object GetUsersRequest(int attempts)

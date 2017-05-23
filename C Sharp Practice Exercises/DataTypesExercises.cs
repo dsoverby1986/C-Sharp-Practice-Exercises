@@ -39,6 +39,7 @@ namespace C_Sharp_Practice_Exercises
         private static void NavigateUsersRequest()
         {
             int request = (int)GetUsersRequest(0);
+            Console.Clear();
             switch (request)
             {
                 case 1:
@@ -86,6 +87,10 @@ namespace C_Sharp_Practice_Exercises
                     ShowDataTypeExerciseMenu();
                     break;
             }
+            if (Program.ReturnToMainMenu)
+                Program.Main(new string[] { });
+            else
+                ShowDataTypeExerciseMenu();
         }
 
         private static object GetUsersRequest(int attempts)
