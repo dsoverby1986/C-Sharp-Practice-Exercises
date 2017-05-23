@@ -21,17 +21,17 @@ namespace C_Sharp_Practice_Exercises
 
         private static readonly Dictionary<int, string> DataTypeExerciseMenuOptions = new Dictionary<int, string>()
         {
-            { 1, "Execute Data Type Exercise 1" },
-            { 2, "Execute Data Type Exercise 2" },
-            { 3, "Execute Data Type Exercise 3" },
-            { 4, "Execute Data Type Exercise 4" },
-            { 5, "Execute Data Type Exercise 5" },
-            { 6, "Execute Data Type Exercise 6" },
-            { 7, "Execute Data Type Exercise 7" },
-            { 8, "Execute Data Type Exercise 8" },
-            { 9, "Execute Data Type Exercise 9" },
-            { 10, "Execute Data Type Exercise 10" },
-            { 11, "Execute Data Type Exercise 11" },
+            { 1, "Execute Exercise 1  - Reverse Letters" },
+            { 2, "Execute Exercise 2  - Draw Triangle" },
+            { 3, "Execute Exercise 3  - Login" },
+            { 4, "Execute Exercise 4  - Calculator" },
+            { 5, "Execute Exercise 5  - Calculate circumference and area of circle" },
+            { 6, "Execute Exercise 6  - Random function plugger" },
+            { 7, "Execute Exercise 7  - Get Speed" },
+            { 8, "Execute Exercise 8  - Get surface area and volume of sphere" },
+            { 9, "Execute Exercise 9  - Classify Character" },
+            { 10, "Execute Exercise 10 - Odd/Even/Both" },
+            { 11, "Execute Exercise 11 - Binary Form" },
             { 12, "Execute All Data Type Exercises" },
             { 13, "Return to the Main Menu" }
         };

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using C_Sharp_Practice_Exercises.Extensions;
 
 namespace C_Sharp_Practice_Exercises
 {
@@ -19,20 +20,20 @@ namespace C_Sharp_Practice_Exercises
 
         private static readonly Dictionary<int, string> BasicExerciseMenuOptions = new Dictionary<int, string>()
         {
-            { 1, "Execute Basic Exercise 1" },
-            { 2, "Execute Basic Exercise 2" },
-            { 3, "Execute Basic Exercise 3" },
-            { 4, "Execute Basic Exercise 4" },
-            { 5, "Execute Basic Exercise 5" },
-            { 6, "Execute Basic Exercise 6" },
-            { 7, "Execute Basic Exercise 7" },
-            { 8, "Execute Basic Exercise 8" },
-            { 9, "Execute Basic Exercise 9" },
-            { 10, "Execute Basic Exercise 10" },
-            { 11, "Execute Basic Exercise 11" },
-            { 12, "Execute Basic Exercise 12" },
-            { 13, "Execute Basic Exercise 13" },
-            { 14, "Execute Basic Exercise 14" },
+            { 1, "Execute Exercise 1  - Hello Shane" },
+            { 2, "Execute Exercise 2  - Addition" },
+            { 3, "Execute Exercise 3  - Division" },
+            { 4, "Execute Exercise 4  - Mathematical Operations" },
+            { 5, "Execute Exercise 5  - Number Swap" },
+            { 6, "Execute Exercise 6  - Tri-Number Multiplication" },
+            { 7, "Execute Exercise 7  - Add/Subtract/Multiply/Divide/Mod" },
+            { 8, "Execute Exercise 8  - Multiplication Table" },
+            { 9, "Execute Exercise 9  - Calculate Average" },
+            { 10, "Execute Exercise 10 - Two Random Operations" },
+            { 11, "Execute Exercise 11 - Age Insult" },
+            { 12, "Execute Exercise 12 - Number Pattern" },
+            { 13, "Execute Exercise 13 - Number Rectangle" },
+            { 14, "Execute Exercise 14 - Temperature Conversion" },
             { 15, "Execute All Basic Exercises" },
             { 16, "Go Back to Main Menu" }
         };
@@ -349,7 +350,7 @@ namespace C_Sharp_Practice_Exercises
                 if (i == 0 || i == 4)
                     Console.WriteLine("{0}{0}{0}", num);
                 else
-                    Console.WriteLine("{0} {0}", num);
+                    Console.WriteLine("{0}{1}{0}", num, num.ToString().Length.Pad(' '));
             ReadKeyAndClear();
         }
 
