@@ -900,8 +900,47 @@ namespace C_Sharp_Practice_Exercises
             { 'F', "Fail" }
         };
 
-        private static void ConditionalStatementExercise20() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise20()
+        {
+            Console.WriteLine(new DayOfTheWeek().Message);
+            ReadKeyAndClear();
+        }
+
+        private class DayOfTheWeek
+        {
+            public DayOfTheWeek()
+            {
+                DayNumber = (int)GetDayNumber(0);
+                DayName = DaysOfTheWeek[DayNumber];
+                Message = $"\nThe name of the day of the week that corresponds to the number enter is: {DayName}";
+            }
+
+            public int DayNumber;
+            public string DayName;
+            public string Message;
+
+            private static readonly Dictionary<int, string> DaysOfTheWeek = new Dictionary<int, string>()
+            {
+                { 1, "Monday" },
+                { 2, "Tuesday" },
+                { 3, "Wednesday" },
+                { 4, "Thursday" },
+                { 5, "Friday" },
+                { 6, "Saturday" },
+                { 7, "Sunday" }
+            };
+
+            private static object GetDayNumber(int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour input is invalid. Try again.\n");
+                Console.WriteLine("Enter a positive whole number from 1 to 7 to get the day of the week that is represented by that number...\n");
+                int dayNum = 0;
+                if (Int32.TryParse(Console.ReadLine(), out dayNum) && DaysOfTheWeek.Keys.Contains(dayNum))
+                    return dayNum;
+                return GetDayNumber(++attempts);
+            }
+        }
 
         private static void ConditionalStatementExercise21() =>
             ExerciseNotComplete();
