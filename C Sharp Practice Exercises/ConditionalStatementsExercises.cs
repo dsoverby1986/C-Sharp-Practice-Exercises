@@ -15,6 +15,7 @@ namespace C_Sharp_Practice_Exercises
             Console.WriteLine("***CONDITIONAL STATEMENT EXERCISES***\n\nChoose an option from the menu below:\n");
             foreach (KeyValuePair<int, string> option in ConditionalStatementExerciseMenuOptions)
                 Console.WriteLine($"{(option.Key < 10 ? " " : "")}{option.Key}.) {option.Value}");
+            Console.WriteLine();
             NavigateUsersRequest();
         }
 
@@ -1069,8 +1070,152 @@ namespace C_Sharp_Practice_Exercises
             return GetMonthNumber(++attempts);
         }
 
-        private static void ConditionalStatementExercise24() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise24()
+        {
+            OrderedDictionary shapes = new OrderedDictionary()
+            {
+                { "Triangle", new string[] { "base", "height" } },
+                { "Rectangle", new string[] { "width", "height" } },
+                { "Square", new string[] { "length of side" } },
+                { "Circle", new string[] { "radius" } },
+                { "Trapezoid", new string[] { "first side", "second side", "height" } },
+                { "Parallelogram", new string[] { "base", "height" } },
+                { "Ellipse", new string[] { "semi-major axis", "semi-minor axis" } },
+                { "Sector", new string[] { "radius", "angle in radians" } }
+            };
+            AreaCalculator areaCalc = new AreaCalculator(shapes);
+            areaCalc.GetShape();
+            areaCalc.GetDimensions();
+            areaCalc.CalculateArea();
+            areaCalc.PrintArea();
+            ReadKeyAndClear();
+        }
+
+        protected internal class AreaCalculator
+        {
+            public AreaCalculator(OrderedDictionary shapes) =>
+                Shapes = shapes;
+
+            private static OrderedDictionary Shapes;
+            private static string Shape;
+            private static int NumberOfDimensions;
+            private static double[] Dimensions;
+            private static double Area;
+            private static string Message;
+
+            public void GetShape()
+            {
+                PrintShapeOptionsMenu();
+                GetUsersShapeOption();
+                SetNumberOfDimensions();
+            }
+
+            private static void PrintShapeOptionsMenu()
+            {
+                Console.WriteLine("Select a shape from the menu...\n");
+                for (int i = 1; i <= Shapes.Count; i++)
+                    Console.WriteLine($"{i}.) {Shapes.Cast<DictionaryEntry>().ElementAt(i - 1).Key}");
+                Console.WriteLine();
+            }
+
+            private static void GetUsersShapeOption() =>
+                Shape = (string)Shapes.Cast<DictionaryEntry>().ElementAt((int)ReadUsersShapeOption(0) - 1).Key;
+
+            private static object ReadUsersShapeOption(int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour input is invalid. Try again.\n");
+                int shapeOption = 0;
+                if (Int32.TryParse(Console.ReadLine(), out shapeOption) && shapeOption > -1 && shapeOption < Shapes.Count)
+                    return shapeOption;
+                return ReadUsersShapeOption(++attempts);
+            }
+
+            private static void SetNumberOfDimensions() =>
+                NumberOfDimensions = ((string[])Shapes[Shape]).Count();
+
+            public void GetDimensions()
+            {
+                Dimensions = new double[NumberOfDimensions];
+                for (int i = 0; i < Dimensions.Length; i++)
+                    Dimensions[i] = (double)GetDimension(i, 0);
+            }
+
+            private static object GetDimension(int dimNum, int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour input is invalid. Try again.");
+                Console.WriteLine($"\nEnter the {((string[])Shapes[Shape])[dimNum]} dimension for the {Shape}...\n");
+                double dimension = 0;
+                if (double.TryParse(Console.ReadLine(), out dimension) && dimension > 0)
+                    return dimension;
+                return GetDimension(dimNum, ++attempts);
+            }
+
+            public void CalculateArea()
+            {
+                switch (Shape.ToLower())
+                {
+                    case "triangle":
+                        CalculateTriangleArea();
+                        break;
+                    case "rectangle":
+                        CalculateRectangleArea();
+                        break;
+                    case "square":
+                        CalculateSquareArea();
+                        break;
+                    case "circle":
+                        CalculateCircleArea();
+                        break;
+                    case "parallelogram":
+                        CalculateParallelogramArea();
+                        break;
+                    case "trapezoid":
+                        CalculateTrapezoidArea();
+                        break;
+                    case "ellipse":
+                        CalculateEllipseArea();
+                        break;
+                    case "sector":
+                        CalculateSectorArea();
+                        break;
+                    default:
+                        break;
+                }
+                CraftMessage();
+            }
+
+            private static void CalculateTriangleArea() =>
+                Area = .5 * Dimensions[0] * Dimensions[1];
+
+            private static void CalculateRectangleArea() =>
+                Area = Dimensions[0] * Dimensions[1];
+
+            private static void CalculateSquareArea() =>
+                Area = Dimensions[0] * Dimensions[0];
+
+            private static void CalculateCircleArea() =>
+                Area = Math.PI * (Dimensions[0] * Dimensions[0]);
+
+            private static void CalculateParallelogramArea() =>
+                Area = Dimensions[0] * Dimensions[1];
+
+            private static void CalculateTrapezoidArea() =>
+                Area = (.5 * (Dimensions[0] + Dimensions[1])) * Dimensions[2];
+
+            private static void CalculateEllipseArea() =>
+                Area = Math.PI * Dimensions[0] * Dimensions[1];
+
+            private static void CalculateSectorArea() =>
+                Area = .5 * (Dimensions[0] * Dimensions[0]) * Dimensions[1];
+
+            private static void CraftMessage() =>
+                Message = $"\nThe area of the {Shape}, based on the entered dimensions, is: {Area}";
+
+            public void PrintArea() =>
+                Console.WriteLine(Message);
+        }
 
         private static void ConditionalStatementExercise25() =>
             ExerciseNotComplete();
