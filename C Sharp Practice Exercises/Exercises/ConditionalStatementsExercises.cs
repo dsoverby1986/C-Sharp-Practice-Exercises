@@ -178,14 +178,14 @@ namespace C_Sharp_Practice_Exercises
             ConditionalStatementExercise15();
             ConditionalStatementExercise16();
             ConditionalStatementExercise17();
-            //ConditionalStatementExercise18();
-            //ConditionalStatementExercise19();
-            //ConditionalStatementExercise20();
-            //ConditionalStatementExercise21();
-            //ConditionalStatementExercise22();
-            //ConditionalStatementExercise23();
-            //ConditionalStatementExercise24();
-            //ConditionalStatementExercise25();
+            ConditionalStatementExercise18();
+            ConditionalStatementExercise19();
+            ConditionalStatementExercise20();
+            ConditionalStatementExercise21();
+            ConditionalStatementExercise22();
+            ConditionalStatementExercise23();
+            ConditionalStatementExercise24();
+            ConditionalStatementExercise25();
         }
 
         private static void ConditionalStatementExercise1()

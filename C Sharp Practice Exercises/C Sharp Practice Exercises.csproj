@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicExercises.cs" />
-    <Compile Include="ConditionalStatementsExercises.cs" />
-    <Compile Include="ConsoleReadKeyClearBehavior.cs" />
-    <Compile Include="Consoleum.cs" />
-    <Compile Include="DataTypesExercises.cs" />
+    <Compile Include="Exercises\BasicExercises.cs" />
+    <Compile Include="Exercises\ConditionalStatementsExercises.cs" />
+    <Compile Include="Helpers\ConsoleReadKeyClearBehavior.cs" />
+    <Compile Include="Helpers\Consoleum.cs" />
+    <Compile Include="Exercises\DataTypesExercises.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
