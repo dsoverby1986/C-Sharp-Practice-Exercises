@@ -1217,8 +1217,67 @@ namespace C_Sharp_Practice_Exercises
                 Console.WriteLine(Message);
         }
 
-        private static void ConditionalStatementExercise25() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise25()
+        {
+            double[] nums = new double[2];
+            for (int i = 0; i < nums.Length; i++)
+                nums[i] = (double)GetNumber((i + 1).Ordinal(), 0);
+            int operation = (int)GetOperation(0);
+            switch (operation)
+            {
+                case 1:
+                    Console.WriteLine($"\n{nums[0]} + {nums[1]} = {nums[0] + nums[1]}");
+                    break;
+                case 2:
+                    Console.WriteLine($"\n{nums[0]} - {nums[1]} = {nums[0] - nums[1]}");
+                    break;
+                case 3:
+                    Console.WriteLine($"\n{nums[0]} * {nums[1]} = {nums[0] * nums[1]}");
+                    break;
+                case 4:
+                    Console.WriteLine($"\n{nums[0]} / {nums[1]} = {nums[0] / nums[1]}");
+                    break;
+                default:
+                    ShowConditionalStatementsExerciseMenu();
+                    break;
+            }
+            ReadKeyAndClear();
+        }
+
+        private static object GetNumber(string numNumber, int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            if (!numNumber.Contains("1"))
+                Console.WriteLine();
+            Console.WriteLine("Enter the {0} number...\n", numNumber);
+            double num = 0;
+            if (double.TryParse(Console.ReadLine(), out num))
+                return num;
+            return GetNumber(numNumber, ++attempts);
+        }
+
+        private static object GetOperation(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            else
+                PrintOperationsMenu();
+            int operation = 0;
+            if (Int32.TryParse(Console.ReadLine(), out operation) && operation > 0 && operation < 5)
+                return operation;
+            return GetOperation(++attempts);
+
+        }
+
+        private static void PrintOperationsMenu()
+        {
+            string[] operations = new string[] { "Addition", "Subtraction", "Multiplication", "Division" };
+            Console.WriteLine("\nChoose an operation...\n");
+            for(int i = 0; i < operations.Length; i++)
+                Console.WriteLine($"{i + 1}.) {operations[i]}");
+            Console.WriteLine();
+        }
 
         private static void ExerciseNotComplete()
         {
