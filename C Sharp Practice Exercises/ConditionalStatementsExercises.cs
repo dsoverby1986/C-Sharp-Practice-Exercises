@@ -987,8 +987,52 @@ namespace C_Sharp_Practice_Exercises
             }
         }
 
-        private static void ConditionalStatementExercise22() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise22()
+        {
+            Console.WriteLine(new Month().Message);
+            ReadKeyAndClear();
+        }
+
+        private class Month
+        {
+            public Month()
+            {
+                MonthNumber = (int)GetMonthNumber(0);
+                MonthName = Months[MonthNumber];
+                Message = $"\nThe name of the month is: {MonthName}";
+            }
+
+            private static int MonthNumber;
+            private static string MonthName;
+            public string Message;
+
+            private static readonly Dictionary<int, string> Months = new Dictionary<int, string>()
+            {
+                { 1, "January" },
+                { 2, "February" },
+                { 3, "March" },
+                { 4, "April" },
+                { 5, "May" },
+                { 6, "June" },
+                { 7, "July" },
+                { 8, "August" },
+                { 9, "September" },
+                { 10, "October" },
+                { 11, "November" },
+                { 12, "December" }
+            };
+
+            private static object GetMonthNumber(int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour input is invalid. Try again.\n");
+                Console.WriteLine("Input a month number and I will tell you the name of the month...\n");
+                int monthNum = 0;
+                if (Int32.TryParse(Console.ReadLine(), out monthNum) && Months.Keys.Contains(monthNum))
+                    return monthNum;
+                return GetMonthNumber(++attempts);
+            }
+        }
 
         private static void ConditionalStatementExercise23() =>
             ExerciseNotComplete();
