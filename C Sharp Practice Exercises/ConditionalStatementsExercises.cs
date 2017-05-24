@@ -873,8 +873,32 @@ namespace C_Sharp_Practice_Exercises
             return GetCustomerUsage(++attempts);
         }
 
-        private static void ConditionalStatementExercise19() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise19()
+        {
+            char grade = (char)GetLetterGrade(0);
+            Console.WriteLine($"\nLetter Grade: {grade}\nDescription: {gradeDescriptions[grade]}");
+            ReadKeyAndClear();
+        }
+
+        private static object GetLetterGrade(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter a letter grade (E, V, G, A, F) to get it's description...\n");
+            char grade = new char();
+            if (char.TryParse(Console.ReadLine().ToUpper(), out grade) && gradeDescriptions.Keys.Contains(grade))
+                return grade;
+            return GetLetterGrade(++attempts);
+        }
+
+        private static readonly Dictionary<char, string> gradeDescriptions = new Dictionary<char, string>()
+        {
+            { 'E', "Excellent" },
+            { 'V', "Very Good" },
+            { 'G', "Good" },
+            { 'A', "Average" },
+            { 'F', "Fail" }
+        };
 
         private static void ConditionalStatementExercise20() =>
             ExerciseNotComplete();
