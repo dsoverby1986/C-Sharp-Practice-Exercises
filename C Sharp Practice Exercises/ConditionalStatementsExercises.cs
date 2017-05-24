@@ -942,8 +942,50 @@ namespace C_Sharp_Practice_Exercises
             }
         }
 
-        private static void ConditionalStatementExercise21() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise21()
+        {
+            Console.WriteLine(new SingleDigit().Message);
+            ReadKeyAndClear();
+        }
+
+        private class SingleDigit
+        {
+            public SingleDigit()
+            {
+                Digit = (int)GetNumber(0);
+                NumberWord = NumberWords[Digit];
+                Message = $"\nThe worded version of the number you entered, {Digit}, is: {NumberWord}";
+            }
+
+            private int Digit;
+            private string NumberWord;
+            public string Message;
+
+            private static readonly Dictionary<int, string> NumberWords = new Dictionary<int, string>()
+            {
+                { 0, "Zero" },
+                { 1, "One" },
+                { 2, "Two" },
+                { 3, "Three" },
+                { 4, "Four" },
+                { 5, "Five" },
+                { 6, "Six" },
+                { 7, "Seven" },
+                { 8, "Eight" },
+                { 9, "Nine" }
+            };
+
+            private static object GetNumber(int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour input is invalid. Try again.\n");
+                Console.WriteLine("Enter a single digit and I will give you the worded number...\n");
+                int digit = 0;
+                if (Int32.TryParse(Console.ReadLine(), out digit) && NumberWords.Keys.Contains(digit))
+                    return digit;
+                return GetNumber(++attempts);
+            }
+        }
 
         private static void ConditionalStatementExercise22() =>
             ExerciseNotComplete();
