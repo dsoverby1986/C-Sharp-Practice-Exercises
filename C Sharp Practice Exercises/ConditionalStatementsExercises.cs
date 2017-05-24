@@ -790,8 +790,88 @@ namespace C_Sharp_Practice_Exercises
             return GetAmount(type, ++attempts);
         }
 
-        private static void ConditionalStatementExercise18() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise18()
+        {
+            Console.WriteLine("Enter information about a customer and their electricity consumption to get their power bill.");
+            ElectricityBill bill = new ElectricityBill((int)GetCustomerId(0), (string)GetCustomerName(0), (double)GetCustomerUsage(0));
+            bill.Print();
+            ReadKeyAndClear();
+        }
+
+        private class ElectricityBill
+        {
+            private int CustomerId;
+            private string CustomerName;
+            private double CustomerUsage;
+            private double Rate;
+            private double Charge;
+            private double Surcharge;
+            private double TotalCharge;
+
+            public ElectricityBill(int id, string name, double usage)
+            {
+                this.CustomerId = id;
+                this.CustomerName = name;
+                this.CustomerUsage = usage;
+                this.Rate = GetRate();
+                this.Charge = CalculateCharge();
+                this.Surcharge = CalculateSurcharge();
+                this.TotalCharge = CalculateTotal();
+            }
+
+            private double GetRate() =>
+                CustomerUsage < 200 ? 1.2 : CustomerUsage < 400 ? 1.5 : CustomerUsage < 600 ? 1.8 : 2;
+
+            private double CalculateCharge() =>
+                CustomerUsage * Rate;
+
+            private double CalculateSurcharge() =>
+                Charge > 400 ? Charge * .15 : 0;
+
+            private double CalculateTotal() =>
+                Charge + Surcharge;
+
+            internal void Print() =>
+                Console.WriteLine($"\nCustomer ID: {CustomerId}\n" + 
+                                  $"Customer Name: {CustomerName}\n" +
+                                  $"Customer Usage: {CustomerUsage}\n" + 
+                                  $"Charges @ ${Rate:0.00}/unit: ${Charge:0.00}\n" + 
+                                  $"Surcharge: ${Surcharge:0.00}\n" + 
+                                  $"Total: ${TotalCharge:0.00}");
+        }
+
+        private static object GetCustomerId(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine("\nEnter the customer's ID number...\n");
+            int id = 0;
+            if (Int32.TryParse(Console.ReadLine(), out id))
+                return id;
+            return GetCustomerId(++attempts);
+        }
+
+        private static object GetCustomerName(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input it invalid. Try again.");
+            Console.WriteLine("\nEnter the customer's name...\n");
+            string name = Console.ReadLine();
+            if (Regex.IsMatch(name, @"([A-Z])\w+"))
+                return name;
+            return GetCustomerName(++attempts);
+        }
+
+        private static object GetCustomerUsage(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine("\nEnter the customer's electricity usage...\n");
+            double usage = 0;
+            if (double.TryParse(Console.ReadLine(), out usage))
+                return usage;
+            return GetCustomerUsage(++attempts);
+        }
 
         private static void ConditionalStatementExercise19() =>
             ExerciseNotComplete();
