@@ -1,5 +1,6 @@
 ﻿using C_Sharp_Practice_Exercises.Extensions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -1034,8 +1035,39 @@ namespace C_Sharp_Practice_Exercises
             }
         }
 
-        private static void ConditionalStatementExercise23() =>
-            ExerciseNotComplete();
+        private static void ConditionalStatementExercise23()
+        {
+            OrderedDictionary months = new OrderedDictionary()
+            {
+                { "January", 31 },
+                { "February", 28 },
+                { "March", 31 },
+                { "April", 30 },
+                { "May", 31 },
+                { "June", 30 },
+                { "July", 31 },
+                { "August", 31 },
+                { "September", 30 },
+                { "October", 31 },
+                { "November", 30 },
+                { "December", 31 }
+            };
+            int monthNum = (int)GetMonthNumber(0);
+            DictionaryEntry monthData = months.Cast<DictionaryEntry>().ElementAt(monthNum - 1);
+            Console.WriteLine($"\n{monthData.Key} has {monthData.Value} days");
+            ReadKeyAndClear();
+        }
+
+        private static object GetMonthNumber(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+            Console.WriteLine("Enter the month number and I will tell you how many days that month has...\n");
+            int monthNum = 0;
+            if (Int32.TryParse(Console.ReadLine(), out monthNum) && monthNum > 0 && monthNum < 13)
+                return monthNum;
+            return GetMonthNumber(++attempts);
+        }
 
         private static void ConditionalStatementExercise24() =>
             ExerciseNotComplete();
