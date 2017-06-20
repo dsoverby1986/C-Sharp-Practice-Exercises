@@ -147,8 +147,24 @@ namespace C_Sharp_Practice_Exercises.Exercises
             return GetNumberFromUser(++attempts);
         }
 
-        private static void CaveOfProgrammingExercise3() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise3()
+        {
+            float[] arr = new float[] { 1.34f, 12.4534f, -23.456f, 166.98789f, 46.2360634657567f };
+            string arrString = "{ ";
+            float last = arr.ToList().Last();
+            foreach(float f in arr)
+            {
+                arrString += f.ToString();
+                if (f != last)
+                    arrString += ", ";
+                else
+                    arrString += " }";
+            }
+            Console.WriteLine("I have an array that looks like this: " + arrString + "\n\nPress any key and I will pull out only the second value in the array...");
+            Console.ReadKey();
+            Console.WriteLine($"\nThis is the second value in the array: {arr[1]}");
+            ReadKeyAndClear();
+        }
 
         private static void CaveOfProgrammingExercise4() =>
             ExerciseNotComplete();
