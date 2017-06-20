@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using C_Sharp_Practice_Exercises.Extensions;
 
-namespace C_Sharp_Practice_Exercises
+namespace C_Sharp_Practice_Exercises.Exercises
 {
     class BasicExercises : ConsoleReadKeyClearBehavior
     {

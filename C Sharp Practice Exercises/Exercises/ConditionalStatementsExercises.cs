@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace C_Sharp_Practice_Exercises
+namespace C_Sharp_Practice_Exercises.Exercises
 {
     class ConditionalStatementsExercises : ConsoleReadKeyClearBehavior
     {
@@ -1277,12 +1277,6 @@ namespace C_Sharp_Practice_Exercises
             for(int i = 0; i < operations.Length; i++)
                 Console.WriteLine($"{i + 1}.) {operations[i]}");
             Console.WriteLine();
-        }
-
-        private static void ExerciseNotComplete()
-        {
-            Console.WriteLine("This exercise has not been completed yet, but thanks for dropping by!");
-            ReadKeyAndClear();
         }
     }
 }

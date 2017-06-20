@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static C_Sharp_Practice_Exercises.BasicExercises;
-using static C_Sharp_Practice_Exercises.DataTypesExercises;
-using static C_Sharp_Practice_Exercises.ConditionalStatementsExercises;
+using static C_Sharp_Practice_Exercises.Exercises.BasicExercises;
+using static C_Sharp_Practice_Exercises.Exercises.DataTypesExercises;
+using static C_Sharp_Practice_Exercises.Exercises.ConditionalStatementsExercises;
+using static C_Sharp_Practice_Exercises.Exercises.CaveOfProgrammingExercises;
 
 namespace C_Sharp_Practice_Exercises
 {
@@ -26,11 +27,13 @@ namespace C_Sharp_Practice_Exercises
             { 1, "Go to Basic Exercises Menu" },
             { 2, "Go to Data Type Exercises Menu" },
             { 3, "Go to Conditional Statements Exercise Menu" },
-            { 4, "Execute all Basic Exercises" },
-            { 5, "Execute all Data Type Exercises" },
-            { 6, "Execute all Conditional Statements Exercises" },
-            { 7, "Execute All Exercises" },
-            { 8, "Exit" }
+            { 4, "Go to Cave Of Programming Exercise Menu" },
+            { 5, "Execute all Basic Exercises" },
+            { 6, "Execute all Data Type Exercises" },
+            { 7, "Execute all Conditional Statements Exercises" },
+            { 8, "Excute all Cave Of Programming Exercises" },
+            { 9, "Execute All Exercises" },
+            { 10, "Exit" }
         };
 
         private static void ShowMainMenu()
@@ -58,22 +61,29 @@ namespace C_Sharp_Practice_Exercises
                     ShowConditionalStatementsExerciseMenu();
                     break;
                 case 4:
-                    ReturnToMainMenu = true;
-                    ExecuteAllBasicExercises();
+                    ShowCaveOfProgrammingExerciseMenu();
                     break;
                 case 5:
                     ReturnToMainMenu = true;
-                    ExecuteAllDataTypeExercises();
+                    ExecuteAllBasicExercises();
                     break;
                 case 6:
                     ReturnToMainMenu = true;
-                    ExecuteAllConditionalStatementsExercises();
+                    ExecuteAllDataTypeExercises();
                     break;
                 case 7:
                     ReturnToMainMenu = true;
-                    ExecuteAllExercises();
+                    ExecuteAllConditionalStatementsExercises();
                     break;
                 case 8:
+                    ReturnToMainMenu = true;
+                    ExecuteAllCaveOfProgrammingExercises();
+                    break;
+                case 9:
+                    ReturnToMainMenu = true;
+                    ExecuteAllExercises();
+                    break;
+                case 10:
                     Environment.Exit(0);
                     break;
                 default:

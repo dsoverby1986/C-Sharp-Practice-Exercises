@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Practice_Exercises
+namespace C_Sharp_Practice_Exercises.Exercises
 {
     class DataTypesExercises : ConsoleReadKeyClearBehavior
     {

@@ -14,5 +14,11 @@ namespace C_Sharp_Practice_Exercises
             Console.ReadKey();
             Console.Clear();
         }
+
+        public static void ExerciseNotComplete()
+        {
+            Console.WriteLine("This exercise has not been completed yet, but thanks for dropping by!");
+            ReadKeyAndClear();
+        }
     }
 }
