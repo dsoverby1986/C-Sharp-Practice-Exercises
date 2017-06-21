@@ -45,6 +45,7 @@
     <Compile Include="Exercises\BasicExercises.cs" />
     <Compile Include="Exercises\CaveOfProgrammingExercises.cs" />
     <Compile Include="Exercises\ConditionalStatementsExercises.cs" />
+    <Compile Include="Extensions\2DArrayExtensions.cs" />
     <Compile Include="Extensions\2DStringArrayExtensions.cs" />
     <Compile Include="Helpers\ConsoleReadKeyClearBehavior.cs" />
     <Compile Include="Helpers\Consoleum.cs" />
