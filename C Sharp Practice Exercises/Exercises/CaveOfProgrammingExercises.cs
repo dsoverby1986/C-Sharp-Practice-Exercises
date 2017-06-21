@@ -147,33 +147,98 @@ namespace C_Sharp_Practice_Exercises.Exercises
             return GetNumberFromUser(++attempts);
         }
 
+        private static float[] arr = new float[] { 1.34f, 12.4534f, -23.456f, 166.98789f, 46.2360634657567f };
+
+        private static string arrString
+        {
+            get
+            {
+                string s = "{ ";
+                float last = arr.ToList().Last();
+                foreach (float f in arr)
+                {
+                    s += f.ToString();
+                    if (f != last)
+                        s += ", ";
+                    else
+                        s += " }";
+                }
+                return s;
+            }
+        }
+
         private static void CaveOfProgrammingExercise3()
         {
-            float[] arr = new float[] { 1.34f, 12.4534f, -23.456f, 166.98789f, 46.2360634657567f };
-            string arrString = "{ ";
-            float last = arr.ToList().Last();
-            foreach(float f in arr)
-            {
-                arrString += f.ToString();
-                if (f != last)
-                    arrString += ", ";
-                else
-                    arrString += " }";
-            }
-            Console.WriteLine("I have an array that looks like this: " + arrString + "\n\nPress any key and I will pull out only the second value in the array...");
+            Console.WriteLine($"I have an array that looks like this: {arrString}\n\nPress any key and I will pull out only the second value in the array...");
             Console.ReadKey();
             Console.WriteLine($"\nThis is the second value in the array: {arr[1]}");
             ReadKeyAndClear();
         }
 
-        private static void CaveOfProgrammingExercise4() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise4()
+        {
+            Console.WriteLine($"I have an array that looks like this: {arrString}\n\nPress any key and I will display these values, each adjusted to the second decimal place, using a foreach loop...");
+            Console.ReadKey();
+            Console.WriteLine();
+            foreach(float f in arr)
+            {
+                Console.Write(f.ToString("0.00"));
+                if (f != arr[arr.Length - 1])
+                    Console.Write(", ");
+                else
+                    Console.WriteLine();
+            }
+            ReadKeyAndClear();
+        }
 
-        private static void CaveOfProgrammingExercise5() =>
-            ExerciseNotComplete();
+        private static string[,] _2dArray = new string[,] { { "Janice", "Jane", "Jenny" }, { "Jack", "John", "James" } };
 
-        private static void CaveOfProgrammingExercise6() =>
-            ExerciseNotComplete();
+        private static string _2dStringArray
+        {
+            get
+            {
+                string stringArray = "{ ";
+                for (int i = 0; i < _2dArray.GetLength(0); i++)
+                {
+                    stringArray += "{ ";
+                    for (int j = 0; j < _2dArray.GetLength(1); j++)
+                    {
+                        stringArray += $"\"{_2dArray[i, j]}\"";
+                        if (j != _2dArray.GetLength(1) - 1)
+                            stringArray += ", ";
+                    }
+                    stringArray += " }";
+                    if (i != _2dArray.GetLength(0) - 1)
+                        stringArray += ", ";
+                }
+                stringArray += " }";
+                return stringArray;
+            }
+        }
+
+        private static void CaveOfProgrammingExercise5()
+        {
+            Console.WriteLine($"I have a two dimensional string array that looks like this: {_2dStringArray}\n");
+            Console.WriteLine("Press any key and I will display the value of the third element of the second inner array...");
+            Console.ReadKey();
+            Console.WriteLine($"This is the value of the third element from the second inner array: {_2dArray[1, 2]}");
+            ReadKeyAndClear();
+        }
+
+        private static void CaveOfProgrammingExercise6()
+        {
+            Console.WriteLine($"I have a two dimensional string array that looks like this: {_2dStringArray}\n");
+            Console.WriteLine("Press any key and I will display this array in a table format...\n");
+            Console.ReadKey();
+            int longestStringLengthIn2dArray = _2dArray.GetLongestStringLength();
+            for(int i = 0; i < _2dArray.GetLength(0); i++)
+            {
+                for(int j = 0; j < _2dArray.GetLength(1); j++)
+                    Console.Write($"{_2dArray[i, j].PadRight(longestStringLengthIn2dArray + 2, ' ')}");
+                Console.WriteLine();
+            }
+            ReadKeyAndClear();
+        }
 
         private static void CaveOfProgrammingExercise7() =>
             ExerciseNotComplete();
