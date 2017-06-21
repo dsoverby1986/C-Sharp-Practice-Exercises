@@ -1,4 +1,5 @@
 ﻿using C_Sharp_Practice_Exercises.Extensions;
+using C_Sharp_Practice_Exercises.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -169,17 +170,14 @@ namespace C_Sharp_Practice_Exercises.Exercises
 
         private static void CaveOfProgrammingExercise3()
         {
-            Console.WriteLine($"I have an array that looks like this: {arrString}\n\nPress any key and I will pull out only the second value in the array...");
-            Console.ReadKey();
+            Consoleum.WriteLineReadKey($"I have an array that looks like this: {arrString}\n\nPress any key and I will pull out only the second value in the array...");
             Console.WriteLine($"\nThis is the second value in the array: {arr[1]}");
             ReadKeyAndClear();
         }
 
         private static void CaveOfProgrammingExercise4()
         {
-            Console.WriteLine($"I have an array that looks like this: {arrString}\n\nPress any key and I will display these values, each adjusted to the second decimal place, using a foreach loop...");
-            Console.ReadKey();
-            Console.WriteLine();
+            Consoleum.WriteLineReadKey($"I have an array that looks like this: {arrString}\n\nPress any key and I will display these values, each adjusted to the second decimal place, using a foreach loop...\n");
             foreach(float f in arr)
             {
                 Console.Write(f.ToString("0.00"));
@@ -219,8 +217,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static void CaveOfProgrammingExercise5()
         {
             Console.WriteLine($"I have a two dimensional string array that looks like this: {_2dStringArray}\n");
-            Console.WriteLine("Press any key and I will display the value of the third element of the second inner array...");
-            Console.ReadKey();
+            Consoleum.WriteLineReadKey("Press any key and I will display the value of the third element of the second inner array...\n");
             Console.WriteLine($"This is the value of the third element from the second inner array: {_2dArray[1, 2]}");
             ReadKeyAndClear();
         }
@@ -228,8 +225,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static void CaveOfProgrammingExercise6()
         {
             Console.WriteLine($"I have a two dimensional string array that looks like this: {_2dStringArray}\n");
-            Console.WriteLine("Press any key and I will display this array in a table format...\n");
-            Console.ReadKey();
+            Consoleum.WriteLineReadKey("Press any key and I will display this array in a table format...\n");
             int longestStringLengthIn2dArray = _2dArray.GetLongestStringLength();
             for(int i = 0; i < _2dArray.GetLength(0); i++)
             {

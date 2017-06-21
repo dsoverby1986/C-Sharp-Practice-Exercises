@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C_Sharp_Practice_Exercises
+namespace C_Sharp_Practice_Exercises.Helpers
 {
     public static class Consoleum
     {
