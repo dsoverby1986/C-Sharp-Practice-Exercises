@@ -23,7 +23,7 @@ namespace C_Sharp_Practice_Exercises.Extensions
             return length;
         }
 
-        private static string[] GetRow(this string[,] _2dArray, int row)
+        public static string[] GetRow(this string[,] _2dArray, int row)
         {
             int cols = _2dArray.GetUpperBound(1) + 1;
             string[] array = new string[cols];
