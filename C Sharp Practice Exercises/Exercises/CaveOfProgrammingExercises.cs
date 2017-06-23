@@ -362,8 +362,17 @@ namespace C_Sharp_Practice_Exercises.Exercises
             }
         }
 
-        private static void CaveOfProgrammingExercise11() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise11()
+        {
+            int num;
+            do
+            {
+                Console.WriteLine("Enter a whole number...");
+                Int32.TryParse(Console.ReadLine(), out num);
+            } while (num <= 10);
+            Console.WriteLine("Integer greater than 10 detected!");
+            ReadKeyAndClear();
+        }
 
         private static void CaveOfProgrammingExercise12() =>
             ExerciseNotComplete();
