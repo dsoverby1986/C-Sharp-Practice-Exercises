@@ -284,8 +284,40 @@ namespace C_Sharp_Practice_Exercises.Exercises
             return GetCarNameFromUser(++attempts);
         }
 
-        private static void CaveOfProgrammingExercise9() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise9()
+        {
+            Console.WriteLine("For this exercise, I want you to enter a whole number between 1 and 10, and I will use a While Loop to\ndetect when the number entered matches a random pre-selected number.");
+            while(userNum != preselectedNum)
+            {
+                GetNumberFromUser(init);
+            }
+            Console.WriteLine($"\nYou got it! The preselected random number is {preselectedNum}.");
+            preselectedNum = -1;
+            userNum = -2;
+            ReadKeyAndClear();
+        }
+
+        private static int min = 1;
+        private static int max = 10;
+        private static int preselectedNum = -1;
+        private static int userNum = -2;
+        private static bool init = true;
+
+        private static void GetNumberFromUser(bool initial)
+        {
+            Console.WriteLine("\nGo ahead and enter a number...\n");
+            if (initial)
+            {
+                Random rdm = new Random();
+                preselectedNum = rdm.Next(min, max);
+                init = false;
+            }
+            if (!Int32.TryParse(Console.ReadLine(), out userNum) || userNum < min || userNum > max)
+            {
+                Console.WriteLine("\nYour input is invalid. Try again.");
+                GetNumberFromUser(false);
+            }
+        }
 
         private static void CaveOfProgrammingExercise10() =>
             ExerciseNotComplete();
