@@ -236,11 +236,53 @@ namespace C_Sharp_Practice_Exercises.Exercises
             ReadKeyAndClear();
         }
 
-        private static void CaveOfProgrammingExercise7() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise7()
+        {
+            Consoleum.WriteLineReadKey("For this exercise I have created a class called Car.\n\nIt has one method called Start.\n\nPress any key to create a new Car object and start the car...\n");
+            Car car = new Car();
+            car.Start();
+            Consoleum.WriteLineReadKey("\nPress any key to continue...");
+            Console.Clear();
+        }
 
-        private static void CaveOfProgrammingExercise8() =>
-            ExerciseNotComplete();
+        internal class Car
+        {
+            public Car() { }
+
+            public Car(string name) =>
+                Name = name;
+
+            private string Name { get; set; }
+
+            public void Start() =>
+                Console.WriteLine("Car Started!");
+
+            public string GetName() =>
+                Name;
+        }
+
+        private static void CaveOfProgrammingExercise8()
+        {
+            Console.WriteLine("For this exercise we'll work on the Car class a little more.\n\nYou can now give the car a name. Go ahead...");
+            string name = (string)GetCarNameFromUser(0);
+            Car car = new Car(name);
+            Consoleum.WriteLineReadKey("\nNow, a new Car object has been created and given the name you specified.\n\nGo ahead and press any key to start the car...\n");
+            car.Start();
+            Consoleum.WriteLineReadKey("\nNow, let's put that name to use.\n\nPress any key to get a little message from the Car, using the name you gave...\n");
+            Console.WriteLine($"Hello! I'm a car and my name is {car.GetName()}!");
+            ReadKeyAndClear();
+        }
+
+        private static object GetCarNameFromUser(int attempts)
+        {
+            if (attempts > 0)
+                Console.WriteLine("\nYour input is invalid. Try again.");
+            Console.WriteLine("\nEnter a name for your car...\n");
+            string name = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(name))
+                return name;
+            return GetCarNameFromUser(++attempts);
+        }
 
         private static void CaveOfProgrammingExercise9() =>
             ExerciseNotComplete();
