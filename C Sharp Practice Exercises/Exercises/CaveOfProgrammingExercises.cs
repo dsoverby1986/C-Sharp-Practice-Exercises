@@ -369,7 +369,8 @@ namespace C_Sharp_Practice_Exercises.Exercises
             {
                 Console.WriteLine("Enter a whole number...");
                 Int32.TryParse(Console.ReadLine(), out num);
-            } while (num <= 10);
+            }
+            while (num <= 10);
             Console.WriteLine("Integer greater than 10 detected!");
             ReadKeyAndClear();
         }
