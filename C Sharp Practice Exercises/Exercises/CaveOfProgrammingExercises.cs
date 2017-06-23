@@ -319,8 +319,48 @@ namespace C_Sharp_Practice_Exercises.Exercises
             }
         }
 
-        private static void CaveOfProgrammingExercise10() =>
-            ExerciseNotComplete();
+        private static void CaveOfProgrammingExercise10()
+        {
+            Console.WriteLine("Enter an integer...\n");
+            int num;
+            if(Int32.TryParse(Console.ReadLine(), out num))
+            {
+                string output = "";
+                switch (num)
+                {
+                    case 1:
+                        output = "Only one?";
+                        break;
+                    case 100:
+                        output = "100? That's a lot!";
+                        break;
+                    default:
+                        output = "Input not recognized";
+                        break;
+                }
+                Console.WriteLine($"\n{output}");
+                string response = (string)AskIfUserWantsToGoAgain(0);
+                Console.Clear();
+                if (response == "y")
+                    CaveOfProgrammingExercise10();
+            }
+            else
+            {
+                Console.WriteLine("\nYour input is invalid. Try again.\n");
+                CaveOfProgrammingExercise10();
+            }
+
+            object AskIfUserWantsToGoAgain(int attempts)
+            {
+                if (attempts > 0)
+                    Console.WriteLine("\nYour response didn't make sense.");
+                Console.WriteLine("\nWant to try another number? (y/n)\n");
+                string response = Console.ReadLine().ToLower(); ;
+                if (response != "y" && response != "n")
+                    return AskIfUserWantsToGoAgain(++attempts);
+                return response;
+            }
+        }
 
         private static void CaveOfProgrammingExercise11() =>
             ExerciseNotComplete();
