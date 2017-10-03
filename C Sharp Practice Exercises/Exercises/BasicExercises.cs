@@ -205,7 +205,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static object GetFactor(string numFactor, int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("You douche nugget! I said a POSITIVE INTEGER! Get it right next time ass wipe!");
+                Console.WriteLine("Hey, hey, hey! I said a POSITIVE INTEGER! Get it right next time!");
             Console.WriteLine("Input the {0} positive integer to multiply...", numFactor);
             int factor = 0;
             if (Int32.TryParse(Console.ReadLine(), out factor) && factor > 0)
@@ -218,11 +218,11 @@ namespace C_Sharp_Practice_Exercises.Exercises
         {
             double numOne = (double)GetAddSubtractMultiplyDivideModNumber("first", 0);
             double numTwo = (double)GetAddSubtractMultiplyDivideModNumber("second", 0);
-            Console.WriteLine("{0} + {1} = {2}", numOne, numTwo, numOne + numTwo);
-            Console.WriteLine("{0} - {1} = {2}", numOne, numTwo, numOne - numTwo);
-            Console.WriteLine("{0} * {1} = {2}", numOne, numTwo, numOne * numTwo);
-            Console.WriteLine("{0} / {1} = {2}", numOne, numTwo, numOne / numTwo);
-            Console.WriteLine("{0} mod {1} = {2}", numOne, numTwo, numOne % numTwo);
+            Console.WriteLine($"{numOne} + {numTwo} = {numOne + numTwo}");
+            Console.WriteLine($"{numOne} - {numTwo} = {numOne - numTwo}");
+            Console.WriteLine($"{numOne} * {numTwo} = {numOne * numTwo}");
+            Console.WriteLine($"{numOne} / {numTwo} = {numOne / numTwo}");
+            Console.WriteLine($"{numOne} mod {numTwo} = {numOne % numTwo}");
             ReadKeyAndClear();
         }
 
@@ -271,7 +271,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static object GetNumberForAverage(string numNumber, int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("Listen shit head, I said enter a NUMBER! Let's give that another go...");
+                Console.WriteLine("Listen, pal, I said enter a NUMBER! Let's give that another go...");
             Console.WriteLine("Enter the {0} number of four to find their average...", numNumber);
             double num = 0;
             if (double.TryParse(Console.ReadLine(), out num))
@@ -292,7 +292,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static object GetNumberForWonkyEquation(string numNumber, int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("Damn it! I told you to enter a number! Now try it again!");
+                Console.WriteLine("Hey, hey, hey! I told you to enter a number! Now try it again!");
             Console.WriteLine("Enter the {0} number to get two wonky equations...", numNumber);
             double num = 0;
             if (double.TryParse(Console.ReadLine(), out num))
@@ -357,7 +357,7 @@ namespace C_Sharp_Practice_Exercises.Exercises
         private static object GetRectangleNumber(int attempts)
         {
             if (attempts > 0)
-                Console.WriteLine("Now, damn it! Didn't I say to give me a positive whole number? Well, do it!");
+                Console.WriteLine("Now, listen! Didn't I say to give me a positive whole number? Well, do it!");
             Console.WriteLine("Input a positive whole number to be made a rectangle of...");
             int num = 0;
             if (Int32.TryParse(Console.ReadLine(), out num))
